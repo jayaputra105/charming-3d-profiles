@@ -5,9 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Soft Neumorphism design system.
- * Light, slightly warm surface with dual (light + dark) shadows that bleed
- * into the background so cards feel sculpted, not stamped.
+ * Dark purple gradient design system inspired by the reference mockup.
+ * Soft inner gradients on cards, glowing purple accents, almost no hard borders.
  */
 
 @theme inline {
@@ -38,224 +37,161 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root {
-  --radius: 1.25rem;
+  --radius: 1.5rem;
 
-  /* Soft neutral canvas — slightly warm, low chroma */
-  --background: oklch(0.955 0.006 255);
-  --foreground: oklch(0.28 0.03 260);
+  --background: oklch(0.16 0.03 280);
+  --foreground: oklch(0.96 0.01 280);
 
-  --card: oklch(0.962 0.006 255);
-  --card-foreground: oklch(0.28 0.03 260);
-  --popover: oklch(0.97 0.005 255);
-  --popover-foreground: oklch(0.28 0.03 260);
+  --card: oklch(0.22 0.05 280);
+  --card-foreground: oklch(0.96 0.01 280);
+  --popover: oklch(0.22 0.05 280);
+  --popover-foreground: oklch(0.96 0.01 280);
 
-  /* Calm indigo accent — used sparingly */
-  --primary: oklch(0.58 0.13 265);
-  --primary-foreground: oklch(0.985 0.003 255);
+  /* Vivid purple primary */
+  --primary: oklch(0.66 0.18 290);
+  --primary-foreground: oklch(0.98 0.005 280);
+  --primary-glow: oklch(0.78 0.16 295);
+  --primary-deep: oklch(0.45 0.18 285);
 
-  --secondary: oklch(0.93 0.008 255);
-  --secondary-foreground: oklch(0.32 0.03 260);
-  --muted: oklch(0.93 0.008 255);
-  --muted-foreground: oklch(0.52 0.025 260);
-  --accent: oklch(0.72 0.11 245);
-  --accent-foreground: oklch(0.22 0.03 260);
+  --secondary: oklch(0.26 0.05 280);
+  --secondary-foreground: oklch(0.96 0.01 280);
+  --muted: oklch(0.26 0.04 280);
+  --muted-foreground: oklch(0.74 0.03 285);
+  --accent: oklch(0.7 0.18 295);
+  --accent-foreground: oklch(0.15 0.03 280);
 
   --destructive: oklch(0.62 0.21 27);
   --destructive-foreground: oklch(0.985 0.003 255);
 
-  /* Borders almost invisible — depth comes from shadows */
-  --border: oklch(0.9 0.008 255 / 0.6);
-  --input: oklch(0.9 0.008 255);
-  --ring: oklch(0.58 0.13 265 / 0.4);
+  --border: oklch(0.4 0.06 285 / 0.35);
+  --input: oklch(0.3 0.05 285);
+  --ring: oklch(0.7 0.18 295 / 0.5);
 
-  --chart-1: oklch(0.58 0.13 265);
-  --chart-2: oklch(0.72 0.11 245);
-  --chart-3: oklch(0.78 0.09 200);
-  --chart-4: oklch(0.7 0.12 300);
-  --chart-5: oklch(0.65 0.14 220);
-
-  --sidebar: oklch(0.96 0.006 255);
-  --sidebar-foreground: oklch(0.28 0.03 260);
-  --sidebar-primary: oklch(0.58 0.13 265);
-  --sidebar-primary-foreground: oklch(0.985 0.003 255);
-  --sidebar-accent: oklch(0.93 0.008 255);
-  --sidebar-accent-foreground: oklch(0.32 0.03 260);
-  --sidebar-border: oklch(0.9 0.008 255 / 0.6);
-  --sidebar-ring: oklch(0.58 0.13 265 / 0.4);
-
-  /* Neumorphic shadow tokens — light from top-left, dark from bottom-right.
-     Long blur radii + low opacity = bayangan gradasi yang menyatu. */
-  --neu-light: oklch(1 0 0 / 0.95);
-  --neu-dark: oklch(0.55 0.03 260 / 0.18);
-
-  --shadow-neu-sm:
-    -4px -4px 10px var(--neu-light),
-    4px 4px 10px var(--neu-dark);
-  --shadow-neu:
-    -10px -10px 24px var(--neu-light),
-    12px 12px 28px var(--neu-dark);
-  --shadow-neu-lg:
-    -16px -16px 40px var(--neu-light),
-    20px 20px 48px var(--neu-dark);
-  --shadow-neu-inset:
-    inset 4px 4px 10px var(--neu-dark),
-    inset -4px -4px 10px var(--neu-light);
-  --shadow-neu-pressed:
-    inset 6px 6px 14px var(--neu-dark),
-    inset -6px -6px 14px var(--neu-light);
-
-  --gradient-surface: linear-gradient(
+  /* Soft card gradient — purple-tinted highlight at top-left fading to deep navy */
+  --gradient-card: linear-gradient(
     145deg,
-    oklch(0.975 0.005 255) 0%,
-    oklch(0.94 0.008 255) 100%
+    oklch(0.34 0.09 285) 0%,
+    oklch(0.22 0.05 280) 45%,
+    oklch(0.17 0.04 278) 100%
   );
+
   --gradient-primary: linear-gradient(
-    145deg,
-    oklch(0.64 0.13 265) 0%,
-    oklch(0.52 0.14 270) 100%
+    140deg,
+    oklch(0.78 0.16 295) 0%,
+    oklch(0.62 0.2 290) 50%,
+    oklch(0.42 0.18 285) 100%
   );
+
+  --gradient-page: radial-gradient(
+      900px 600px at 90% -10%,
+      oklch(0.45 0.2 290 / 0.55) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 700px at -10% 110%,
+      oklch(0.4 0.18 285 / 0.45) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      600px 400px at 50% 50%,
+      oklch(0.28 0.08 285 / 0.35) 0%,
+      transparent 70%
+    ),
+    linear-gradient(180deg, oklch(0.13 0.03 280) 0%, oklch(0.1 0.02 280) 100%);
+
+  --shadow-soft:
+    0 30px 60px -20px oklch(0.05 0.05 280 / 0.6),
+    0 10px 30px -10px oklch(0.05 0.05 280 / 0.5),
+    inset 1px 1px 0 oklch(1 0 0 / 0.06);
+  --shadow-glow:
+    0 0 40px -5px oklch(0.62 0.22 290 / 0.55),
+    0 20px 50px -15px oklch(0.05 0.05 280 / 0.6);
 }
 
-.dark {
-  --background: oklch(0.22 0.02 265);
-  --foreground: oklch(0.92 0.01 260);
-  --card: oklch(0.24 0.02 265);
-  --card-foreground: oklch(0.92 0.01 260);
-  --popover: oklch(0.24 0.02 265);
-  --popover-foreground: oklch(0.92 0.01 260);
-  --primary: oklch(0.7 0.14 265);
-  --primary-foreground: oklch(0.18 0.02 265);
-  --secondary: oklch(0.27 0.02 265);
-  --secondary-foreground: oklch(0.92 0.01 260);
-  --muted: oklch(0.27 0.02 265);
-  --muted-foreground: oklch(0.68 0.02 260);
-  --accent: oklch(0.7 0.14 265);
-  --accent-foreground: oklch(0.18 0.02 265);
-  --destructive: oklch(0.6 0.22 27);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.3 0.02 265 / 0.6);
-  --input: oklch(0.3 0.02 265);
-  --ring: oklch(0.7 0.14 265 / 0.5);
+/* === Utilities === */
 
-  --neu-light: oklch(0.32 0.025 265 / 0.6);
-  --neu-dark: oklch(0.1 0.01 265 / 0.7);
-  --gradient-surface: linear-gradient(
+@utility surface-card {
+  background: var(--gradient-card);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid oklch(1 0 0 / 0.06);
+  position: relative;
+  isolation: isolate;
+}
+
+@utility surface-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
     145deg,
-    oklch(0.26 0.02 265) 0%,
-    oklch(0.2 0.02 265) 100%
+    oklch(1 0 0 / 0.18),
+    oklch(1 0 0 / 0) 40%,
+    oklch(0.7 0.18 295 / 0.25) 100%
   );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
 }
 
-/* === Neumorphic utilities ===
-   Use these instead of ad-hoc shadow classes so depth stays consistent.
-   The background uses the surface gradient so highlight/shadow blend
-   smoothly into the card itself — no hard edges. */
-
-@utility neu-surface {
-  background: var(--gradient-surface);
-}
-
-@utility neu-raised {
-  background: var(--gradient-surface);
-  box-shadow: var(--shadow-neu);
-  border: 1px solid oklch(1 0 0 / 0.5);
-}
-
-@utility neu-raised-sm {
-  background: var(--gradient-surface);
-  box-shadow: var(--shadow-neu-sm);
-  border: 1px solid oklch(1 0 0 / 0.4);
-}
-
-@utility neu-raised-lg {
-  background: var(--gradient-surface);
-  box-shadow: var(--shadow-neu-lg);
-  border: 1px solid oklch(1 0 0 / 0.5);
-}
-
-@utility neu-inset {
-  background: var(--gradient-surface);
-  box-shadow: var(--shadow-neu-inset);
-}
-
-@utility neu-pressable {
-  background: var(--gradient-surface);
-  box-shadow: var(--shadow-neu);
-  border: 1px solid oklch(1 0 0 / 0.5);
-  transition:
-    box-shadow 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
-
-  &:hover {
-    box-shadow: var(--shadow-neu-lg);
-    transform: translateY(-1px);
-  }
-  &:active {
-    box-shadow: var(--shadow-neu-pressed);
-    transform: translateY(0);
-  }
-}
-
-@utility neu-primary {
+@utility surface-primary {
   background: var(--gradient-primary);
   color: var(--primary-foreground);
-  box-shadow:
-    -6px -6px 14px var(--neu-light),
-    8px 8px 20px var(--neu-dark),
-    inset 1px 1px 1px oklch(1 0 0 / 0.25);
+  box-shadow: var(--shadow-glow);
+  border: 1px solid oklch(1 0 0 / 0.15);
+}
+
+@utility btn-primary {
+  background: var(--gradient-primary);
+  color: var(--primary-foreground);
+  box-shadow: var(--shadow-glow);
   border: 1px solid oklch(1 0 0 / 0.15);
   transition:
-    box-shadow 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
 
   &:hover {
     transform: translateY(-1px);
     box-shadow:
-      -8px -8px 18px var(--neu-light),
-      10px 10px 26px var(--neu-dark),
-      inset 1px 1px 1px oklch(1 0 0 / 0.3);
+      0 0 60px -5px oklch(0.62 0.22 290 / 0.7),
+      0 25px 60px -15px oklch(0.05 0.05 280 / 0.7);
   }
-  &:active {
-    transform: translateY(0);
-    box-shadow:
-      inset 4px 4px 10px oklch(0 0 0 / 0.25),
-      inset -2px -2px 6px oklch(1 0 0 / 0.15);
+}
+
+@utility btn-ghost {
+  background: var(--gradient-card);
+  color: var(--foreground);
+  border: 1px solid oklch(1 0 0 / 0.1);
+  box-shadow: var(--shadow-soft);
+  transition: transform 250ms ease, border-color 250ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: oklch(0.7 0.18 295 / 0.5);
   }
+}
+
+@utility chip {
+  background: oklch(0.3 0.08 285 / 0.6);
+  color: var(--foreground);
+  border: 1px solid oklch(0.7 0.18 295 / 0.3);
+  backdrop-filter: blur(8px);
 }
 
 @layer base {
   * {
     border-color: var(--color-border);
   }
-  body {
-    background:
-      radial-gradient(
-        1200px 600px at 10% -10%,
-        oklch(0.98 0.01 255) 0%,
-        transparent 60%
-      ),
-      radial-gradient(
-        1000px 500px at 110% 10%,
-        oklch(0.93 0.02 260) 0%,
-        transparent 55%
-      ),
-      var(--color-background);
+  html, body {
+    background: var(--gradient-page);
+    background-attachment: fixed;
     color: var(--color-foreground);
     -webkit-font-smoothing: antialiased;
   }
