@@ -32,7 +32,7 @@ function Home() {
     <SiteShell>
       <section className="grid items-center gap-10 md:grid-cols-[1.2fr_auto]">
         <div className="space-y-6">
-          <span className="neu-inset inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
+          <span className="chip inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
             <Sparkles className="h-3.5 w-3.5" /> Fullstack Web Developer
           </span>
           <h1 className="text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
@@ -50,14 +50,14 @@ function Home() {
           <div className="flex flex-wrap gap-3">
             <Link
               to="/portfolio"
-              className="neu-primary group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
+              className="btn-primary group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
             >
               Lihat Portofolio
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/contact"
-              className="neu-pressable inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-foreground"
+              className="btn-ghost inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-foreground"
             >
               Hubungi Saya
             </Link>
@@ -82,7 +82,7 @@ function Home() {
         </div>
 
         <div className="flex justify-center md:justify-end">
-          <div className="neu-raised-lg rounded-[2rem] p-3">
+          <div className="surface-card rounded-[2rem] p-3">
             <img
               src={profileUrl}
               alt="Foto profil Jaya Putra Syaipul"

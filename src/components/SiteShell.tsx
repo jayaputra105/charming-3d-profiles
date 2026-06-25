@@ -13,9 +13,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="relative min-h-screen overflow-hidden text-foreground">
       <header className="sticky top-0 z-40 px-4 pt-4 sm:px-6">
-        <div className="neu-raised-sm mx-auto flex max-w-6xl items-center justify-between rounded-full px-3 py-2 sm:px-5">
+        <div className="surface-card mx-auto flex max-w-6xl items-center justify-between rounded-full px-3 py-2 sm:px-5">
           <Link to="/" className="flex items-center gap-2 pl-1 font-semibold tracking-tight">
-            <span className="neu-primary grid h-9 w-9 place-items-center rounded-full">
+            <span className="surface-primary grid h-9 w-9 place-items-center rounded-full">
               <Sparkles className="h-4 w-4" />
             </span>
             <span className="text-sm sm:text-base">Jaya Putra</span>
@@ -29,7 +29,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 className="rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:text-foreground"
                 activeProps={{
                   className:
-                    "neu-inset rounded-full px-3 py-1.5 text-foreground font-medium",
+                    "surface-primary rounded-full px-3 py-1.5 font-medium",
                 }}
               >
                 {item.label}
@@ -57,7 +57,7 @@ export function SectionTitle({ kicker, title }: { kicker?: string; title: string
   return (
     <div className="mb-10">
       {kicker && (
-        <span className="neu-inset inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
+        <span className="chip inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-widest">
           {kicker}
         </span>
       )}
@@ -74,7 +74,7 @@ export function GlassCard({
   className?: string;
 }) {
   return (
-    <div className={`neu-raised rounded-3xl p-6 sm:p-8 ${className}`}>
+    <div className={`surface-card rounded-3xl p-6 sm:p-8 ${className}`}>
       {children}
     </div>
   );
