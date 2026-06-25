@@ -11,32 +11,25 @@ const nav = [
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
-      {/* Ambient purple glow background */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-40 -left-32 h-[28rem] w-[28rem] rounded-full bg-primary/30 blur-[120px]" />
-        <div className="absolute top-1/3 -right-32 h-[24rem] w-[24rem] rounded-full bg-primary/20 blur-[120px]" />
-        <div className="absolute bottom-0 left-1/3 h-[20rem] w-[20rem] rounded-full bg-primary/15 blur-[120px]" />
-      </div>
-
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/70 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-          <Link to="/" className="flex items-center gap-2 font-bold tracking-tight">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-primary to-primary/60 text-primary-foreground shadow-lg shadow-primary/40">
+    <div className="relative min-h-screen overflow-hidden text-foreground">
+      <header className="sticky top-0 z-40 px-4 pt-4 sm:px-6">
+        <div className="neu-raised-sm mx-auto flex max-w-6xl items-center justify-between rounded-full px-3 py-2 sm:px-5">
+          <Link to="/" className="flex items-center gap-2 pl-1 font-semibold tracking-tight">
+            <span className="neu-primary grid h-9 w-9 place-items-center rounded-full">
               <Sparkles className="h-4 w-4" />
             </span>
-            <span>Jaya Putra</span>
+            <span className="text-sm sm:text-base">Jaya Putra</span>
           </Link>
-          <nav className="flex items-center gap-1 text-sm">
+          <nav className="flex items-center gap-1 text-xs sm:text-sm">
             {nav.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 activeOptions={{ exact: item.to === "/" }}
-                className="rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:bg-primary/10 hover:text-foreground"
+                className="rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:text-foreground"
                 activeProps={{
                   className:
-                    "rounded-full px-3 py-1.5 bg-primary/15 text-foreground ring-1 ring-primary/40",
+                    "neu-inset rounded-full px-3 py-1.5 text-foreground font-medium",
                 }}
               >
                 {item.label}
@@ -48,7 +41,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
       <main className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-8 sm:py-14">{children}</main>
 
-      <footer className="mt-16 border-t border-border/60 bg-background/40">
+      <footer className="mt-16">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 py-8 text-sm text-muted-foreground sm:flex-row sm:px-8">
           <p>&copy; {new Date().getFullYear()} Jaya Putra Syaipul.</p>
           <Link to="/tc" className="hover:text-foreground hover:underline">
@@ -62,13 +55,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
 export function SectionTitle({ kicker, title }: { kicker?: string; title: string }) {
   return (
-    <div className="mb-8">
+    <div className="mb-10">
       {kicker && (
-        <span className="inline-block rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary ring-1 ring-primary/40">
+        <span className="neu-inset inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
           {kicker}
         </span>
       )}
-      <h1 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">{title}</h1>
+      <h1 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">{title}</h1>
     </div>
   );
 }
@@ -81,9 +74,7 @@ export function GlassCard({
   className?: string;
 }) {
   return (
-    <div
-      className={`rounded-2xl border border-border/70 bg-card/60 p-6 shadow-xl shadow-primary/5 backdrop-blur-xl ${className}`}
-    >
+    <div className={`neu-raised rounded-3xl p-6 sm:p-8 ${className}`}>
       {children}
     </div>
   );
