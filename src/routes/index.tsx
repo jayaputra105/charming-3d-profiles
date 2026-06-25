@@ -32,12 +32,12 @@ function Home() {
     <SiteShell>
       <section className="grid items-center gap-10 md:grid-cols-[1.2fr_auto]">
         <div className="space-y-6">
-          <span className="inline-flex items-center gap-2 rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary ring-1 ring-primary/40">
+          <span className="neu-inset inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
             <Sparkles className="h-3.5 w-3.5" /> Fullstack Web Developer
           </span>
           <h1 className="text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             Halo, saya{" "}
-            <span className="bg-gradient-to-r from-primary via-primary to-primary/60 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">
               Jaya Putra
             </span>
           </h1>
@@ -50,14 +50,14 @@ function Home() {
           <div className="flex flex-wrap gap-3">
             <Link
               to="/portfolio"
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/40 transition-transform hover:-translate-y-0.5"
+              className="neu-primary group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
             >
               Lihat Portofolio
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-5 py-2.5 text-sm font-semibold backdrop-blur transition-colors hover:border-primary/60 hover:text-primary"
+              className="neu-pressable inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-foreground"
             >
               Hubungi Saya
             </Link>
@@ -82,17 +82,14 @@ function Home() {
         </div>
 
         <div className="flex justify-center md:justify-end">
-          <div className="relative">
-            <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-primary/60 to-primary/10 blur-2xl" />
-            <div className="overflow-hidden rounded-[2rem] border border-primary/40 bg-card/60 p-2 shadow-2xl shadow-primary/30 backdrop-blur-xl">
-              <img
-                src={profileUrl}
-                alt="Foto profil Jaya Putra Syaipul"
-                width={260}
-                height={260}
-                className="h-56 w-56 rounded-[1.5rem] object-cover sm:h-64 sm:w-64"
-              />
-            </div>
+          <div className="neu-raised-lg rounded-[2rem] p-3">
+            <img
+              src={profileUrl}
+              alt="Foto profil Jaya Putra Syaipul"
+              width={260}
+              height={260}
+              className="h-56 w-56 rounded-[1.5rem] object-cover sm:h-64 sm:w-64"
+            />
           </div>
         </div>
       </section>
