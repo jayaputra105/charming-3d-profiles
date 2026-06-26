@@ -1,6 +1,7 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { Sparkles } from "lucide-react";
+import { AnimatePresence, motion, type PanInfo } from "framer-motion";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -9,7 +10,29 @@ const nav = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
+const order = nav.map((n) => n.to) as readonly string[];
+
 export function SiteShell({ children }: { children: ReactNode }) {
+  const navigate = useNavigate();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  const currentIdx = (() => {
+    const i = order.indexOf(pathname);
+    return i === -1 ? 0 : i;
+  })();
+
+  const goTo = (delta: number) => {
+    const next = currentIdx + delta;
+    if (next < 0 || next >= order.length) return;
+    navigate({ to: order[next] as any });
+  };
+
+  const handleDragEnd = (_: unknown, info: PanInfo) => {
+    const threshold = 80;
+    if (info.offset.x < -threshold || info.velocity.x < -500) goTo(1);
+    else if (info.offset.x > threshold || info.velocity.x > 500) goTo(-1);
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden text-foreground">
       <header className="sticky top-0 z-40 px-4 pt-4 sm:px-6">
@@ -39,7 +62,22 @@ export function SiteShell({ children }: { children: ReactNode }) {
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-8 sm:py-14">{children}</main>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.main
+          key={pathname}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
+          onDragEnd={handleDragEnd}
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -40 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-8 sm:py-14 touch-pan-y"
+        >
+          {children}
+        </motion.main>
+      </AnimatePresence>
 
       <footer className="mt-16">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 py-8 text-sm text-muted-foreground sm:flex-row sm:px-8">
