@@ -50,11 +50,13 @@
   --popover: oklch(0.22 0.05 280);
   --popover-foreground: oklch(0.96 0.01 280);
 
-  /* Vivid purple primary */
-  --primary: oklch(0.66 0.18 290);
+  /* Vivid purple primary + bright accent */
+  --primary: oklch(0.66 0.2 295);
   --primary-foreground: oklch(0.98 0.005 280);
-  --primary-glow: oklch(0.78 0.16 295);
-  --primary-deep: oklch(0.45 0.18 285);
+  --primary-glow: oklch(0.82 0.18 300);
+  --primary-bright: oklch(0.74 0.24 300);
+  --primary-deep: oklch(0.45 0.2 285);
+
 
   --secondary: oklch(0.26 0.05 280);
   --secondary-foreground: oklch(0.96 0.01 280);
