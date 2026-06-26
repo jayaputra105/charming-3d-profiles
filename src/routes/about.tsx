@@ -85,7 +85,7 @@ function AboutPage() {
             <img
               src={profileUrl}
               alt="Jaya Putra Syaipul"
-              className="relative h-28 w-24 rounded-[1.25rem] object-cover shadow-xl ring-1 ring-white/10 sm:h-56 sm:w-44 sm:rounded-[1.5rem]"
+              className="relative h-40 w-32 rounded-[1.25rem] object-cover shadow-xl ring-1 ring-white/10 sm:h-72 sm:w-56 sm:rounded-[1.5rem]"
             />
           </motion.div>
         </div>
