@@ -31,12 +31,12 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <SiteShell>
-      <section className="space-y-6">
-        <span className="chip inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
+      <section className="space-y-5 sm:space-y-6">
+        <span className="chip inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-primary sm:text-xs">
           <Sparkles className="h-3.5 w-3.5" /> Fullstack Web Developer
         </span>
 
-        <div className="flex items-center gap-4 sm:gap-6">
+        <div className="flex items-center gap-3 sm:gap-6">
           {/* Round portrait with purple 3D glow */}
           <div className="relative shrink-0">
             <div
@@ -55,12 +55,12 @@ function Home() {
               <img
                 src={profileUrl}
                 alt="Foto profil Jaya Putra Syaipul"
-                className="block h-20 w-20 rounded-full object-cover object-top ring-2 ring-background sm:h-28 sm:w-28 md:h-32 md:w-32"
+                className="block h-16 w-16 rounded-full object-cover object-top ring-2 ring-background sm:h-28 sm:w-28 md:h-32 md:w-32"
               />
             </div>
           </div>
 
-          <h1 className="text-3xl font-black leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+          <h1 className="min-w-0 font-black leading-[1.05] tracking-tight" style={{ fontSize: "clamp(1.5rem, 6vw, 3.75rem)" }}>
             Halo, saya{" "}
             <span className="bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">
               Jaya Putra
@@ -68,29 +68,29 @@ function Home() {
           </h1>
         </div>
 
-        <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <p className="max-w-xl leading-relaxed text-muted-foreground" style={{ fontSize: "clamp(0.9rem, 2.2vw, 1.125rem)" }}>
           Saya membangun website yang cepat, stabil, aman, dan mudah digunakan —
           disesuaikan dengan kebutuhan profil, layanan, maupun sistem informasi
           bisnis Anda.
         </p>
 
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2.5 sm:gap-3">
           <Link
             to="/portfolio"
-            className="btn-primary group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
+            className="btn-primary group inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold sm:px-5 sm:py-2.5 sm:text-sm"
           >
             Lihat Portofolio
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
           <Link
             to="/contact"
-            className="btn-ghost inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-foreground"
+            className="btn-ghost inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-foreground sm:px-5 sm:py-2.5 sm:text-sm"
           >
             Hubungi Saya
           </Link>
         </div>
 
-        <div className="flex flex-wrap gap-4 pt-2 text-sm text-muted-foreground">
+        <div className="flex flex-wrap gap-3 pt-2 text-xs text-muted-foreground sm:gap-4 sm:text-sm">
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}`}
             target="_blank"
@@ -109,15 +109,15 @@ function Home() {
       </section>
 
 
-      <section className="mt-20 grid gap-5 sm:grid-cols-3">
+      <section className="mt-12 grid gap-4 sm:mt-20 sm:grid-cols-3 sm:gap-5">
         {[
           { k: "Fokus", v: "Fullstack Web" },
           { k: "Pengalaman", v: "Web Cepat & Aman" },
           { k: "Garansi", v: "3 Bulan Bebas Bug" },
         ].map((s) => (
-          <GlassCard key={s.k}>
-            <p className="text-xs uppercase tracking-widest text-primary">{s.k}</p>
-            <p className="mt-2 text-xl font-bold">{s.v}</p>
+          <GlassCard key={s.k} className="p-5 sm:p-8">
+            <p className="text-[10px] uppercase tracking-widest text-primary sm:text-xs">{s.k}</p>
+            <p className="mt-2 text-lg font-bold sm:text-xl">{s.v}</p>
           </GlassCard>
         ))}
       </section>
