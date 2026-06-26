@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 import { SiteShell, SectionTitle, GlassCard } from "@/components/SiteShell";
 
 const WHATSAPP_NUMBER = "6282199870047";
-const EMAIL_ADDRESS = "zeyyjay@gmail.com";
+const EMAIL_ADDRESS = "jayaputrasyaipul7@gmail.com";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
