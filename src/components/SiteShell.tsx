@@ -1,7 +1,7 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { Sparkles } from "lucide-react";
 import { AnimatePresence, motion, type PanInfo } from "framer-motion";
+import logoAsset from "@/assets/logo.png.asset.json";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -38,8 +38,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-40 px-3 pt-3 sm:px-6 sm:pt-4">
         <div className="surface-card mx-auto flex max-w-6xl items-center justify-between gap-2 rounded-full px-2 py-1.5 sm:px-5 sm:py-2">
           <Link to="/" className="flex min-w-0 items-center gap-2 pl-1 font-semibold tracking-tight">
-            <span className="surface-primary grid h-8 w-8 shrink-0 place-items-center rounded-full sm:h-9 sm:w-9">
-              <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+            <span className="grid h-8 w-8 shrink-0 place-items-center overflow-hidden rounded-full bg-white sm:h-9 sm:w-9">
+              <img src={logoAsset.url} alt="JP Logo" className="h-full w-full object-contain p-0.5" />
             </span>
             <span className="truncate text-xs sm:text-base">Jaya Putra</span>
           </Link>
