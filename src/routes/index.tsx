@@ -5,7 +5,8 @@ import { SiteShell, GlassCard } from "@/components/SiteShell";
 const profileUrl = "/img/profile-square.png";
 
 const WHATSAPP_NUMBER = "6282199870047";
-const EMAIL_ADDRESS = "zeyyjay@gmail.com";
+const EMAIL_ADDRESS = "jayaputrasyaipul7@gmail.com";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
