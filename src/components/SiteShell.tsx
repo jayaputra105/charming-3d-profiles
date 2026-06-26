@@ -41,7 +41,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <span className="surface-primary grid h-8 w-8 shrink-0 place-items-center rounded-full sm:h-9 sm:w-9">
               <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             </span>
-            <span className="hidden truncate text-sm sm:inline sm:text-base">Jaya Putra</span>
+            <span className="truncate text-xs sm:text-base">Jaya Putra</span>
           </Link>
           <nav className="flex items-center gap-0.5 text-[11px] sm:gap-1 sm:text-sm">
             {nav.map((item) => (
