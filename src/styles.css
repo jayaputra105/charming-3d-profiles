@@ -82,10 +82,11 @@
 
   --gradient-primary: linear-gradient(
     140deg,
-    oklch(0.78 0.16 295) 0%,
-    oklch(0.62 0.2 290) 50%,
-    oklch(0.42 0.18 285) 100%
+    oklch(0.86 0.18 305) 0%,
+    oklch(0.7 0.24 300) 45%,
+    oklch(0.48 0.22 285) 100%
   );
+
 
   --gradient-page: radial-gradient(
       900px 600px at 90% -10%,
