@@ -48,12 +48,12 @@ function AboutPage() {
         variants={fadeUp}
         className="surface-card relative rounded-[2rem] p-6 sm:p-8"
       >
-        <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-start">
-          <div>
-            <div className="surface-primary inline-flex items-center gap-2 rounded-2xl px-4 py-2 text-sm font-bold">
+        <div className="grid grid-cols-[1fr_auto] items-start gap-4 sm:gap-6">
+          <div className="min-w-0">
+            <div className="surface-primary inline-flex items-center gap-2 rounded-2xl px-3 py-1.5 text-xs font-bold sm:px-4 sm:py-2 sm:text-sm">
               <Sparkles className="h-4 w-4" /> About me
             </div>
-            <p className="mt-6 leading-relaxed text-muted-foreground">
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:mt-6 sm:text-base">
               Hi, my name is{" "}
               <span className="font-semibold text-foreground">Jaya Putra</span>.
               I am a Fullstack Web Developer based in Indonesia, blending
@@ -61,20 +61,6 @@ function AboutPage() {
               fast, secure, and human-friendly digital products that help
               businesses grow.
             </p>
-
-            {/* Contact strip */}
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <ContactPill
-                icon={<Mail className="h-4 w-4" />}
-                label="zeyyjay@gmail.com"
-                href="mailto:zeyyjay@gmail.com"
-              />
-              <ContactPill
-                icon={<Instagram className="h-4 w-4" />}
-                label="@jayaputra.dev"
-                href="https://instagram.com/jayaputra.dev"
-              />
-            </div>
           </div>
 
           {/* Photo with floating purple 3D backdrop */}
@@ -83,26 +69,41 @@ function AboutPage() {
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
             whileHover={{ y: -4, rotate: -1 }}
-            className="relative mx-auto w-fit md:mx-0"
+            className="relative shrink-0"
           >
             {/* Purple 3D backdrop — offset, NOT merged with photo */}
             <div
               aria-hidden
-              className="absolute -bottom-3 -right-3 h-full w-full rounded-[1.75rem]"
+              className="absolute -bottom-2 -right-2 h-full w-full rounded-[1.5rem] sm:-bottom-3 sm:-right-3"
               style={{
                 background:
-                  "linear-gradient(140deg, var(--primary), var(--primary-glow))",
+                  "linear-gradient(140deg, var(--primary-bright), var(--primary-deep))",
                 boxShadow:
-                  "0 18px 40px -12px color-mix(in oklab, var(--primary) 55%, transparent)",
+                  "0 18px 40px -12px color-mix(in oklab, var(--primary-bright) 60%, transparent)",
               }}
             />
             <img
               src={profileUrl}
               alt="Jaya Putra Syaipul"
-              className="relative h-44 w-36 rounded-[1.5rem] object-cover shadow-xl ring-1 ring-white/10 sm:h-56 sm:w-44"
+              className="relative h-28 w-24 rounded-[1.25rem] object-cover shadow-xl ring-1 ring-white/10 sm:h-56 sm:w-44 sm:rounded-[1.5rem]"
             />
           </motion.div>
         </div>
+
+        {/* Contact strip */}
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <ContactPill
+            icon={<Mail className="h-4 w-4" />}
+            label="jayaputrasyaipul7@gmail.com"
+            href="mailto:jayaputrasyaipul7@gmail.com"
+          />
+          <ContactPill
+            icon={<Instagram className="h-4 w-4" />}
+            label="@jaya_putra105"
+            href="https://www.instagram.com/jaya_putra105?igsh=ZWFmczBkejM3NHY1"
+          />
+        </div>
+
       </motion.section>
 
       {/* === Info grid === */}
