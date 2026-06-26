@@ -41,7 +41,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <span className="surface-primary grid h-8 w-8 shrink-0 place-items-center rounded-full sm:h-9 sm:w-9">
               <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             </span>
-            <span className="hidden truncate text-sm sm:inline sm:text-base">Jaya Putra</span>
+            <span className="truncate text-xs sm:text-base">Jaya Putra</span>
           </Link>
           <nav className="flex items-center gap-0.5 text-[11px] sm:gap-1 sm:text-sm">
             {nav.map((item) => (
@@ -67,12 +67,14 @@ export function SiteShell({ children }: { children: ReactNode }) {
           key={pathname}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.2}
+          dragElastic={0.15}
+          dragMomentum={false}
           onDragEnd={handleDragEnd}
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -40 }}
-          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          exit={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.22, ease: "easeOut" }}
+          style={{ willChange: "transform, opacity" }}
           className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-8 sm:py-14 touch-pan-y"
         >
           {children}
