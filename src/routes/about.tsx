@@ -46,14 +46,14 @@ function AboutPage() {
         initial="hidden"
         animate="show"
         variants={fadeUp}
-        className="surface-card relative rounded-[2rem] p-6 sm:p-8"
+        className="surface-card relative rounded-[1.5rem] p-4 sm:rounded-[2rem] sm:p-8"
       >
-        <div className="grid grid-cols-[1fr_auto] items-start gap-4 sm:gap-6">
+        <div className="grid grid-cols-[1fr_auto] items-start gap-3 sm:gap-6">
           <div className="min-w-0">
-            <div className="surface-primary inline-flex items-center gap-2 rounded-2xl px-3 py-1.5 text-xs font-bold sm:px-4 sm:py-2 sm:text-sm">
-              <Sparkles className="h-4 w-4" /> About me
+            <div className="surface-primary inline-flex items-center gap-2 rounded-2xl px-2.5 py-1 text-[11px] font-bold sm:px-4 sm:py-2 sm:text-sm">
+              <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> About me
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:mt-6 sm:text-base">
+            <p className="mt-3 leading-relaxed text-muted-foreground sm:mt-6" style={{ fontSize: "clamp(0.8rem, 2vw, 1rem)" }}>
               Hi, my name is{" "}
               <span className="font-semibold text-foreground">Jaya Putra</span>.
               I am a Fullstack Web Developer based in Indonesia, blending
@@ -74,7 +74,7 @@ function AboutPage() {
             {/* Purple 3D backdrop — offset, NOT merged with photo */}
             <div
               aria-hidden
-              className="absolute -bottom-2 -right-2 h-full w-full rounded-[1.5rem] sm:-bottom-3 sm:-right-3"
+              className="absolute -bottom-2 -right-2 h-full w-full rounded-[1.25rem] sm:-bottom-3 sm:-right-3 sm:rounded-[1.5rem]"
               style={{
                 background:
                   "linear-gradient(140deg, var(--primary-bright), var(--primary-deep))",
@@ -85,13 +85,14 @@ function AboutPage() {
             <img
               src={profileUrl}
               alt="Jaya Putra Syaipul"
-              className="relative h-40 w-32 rounded-[1.25rem] object-cover shadow-xl ring-1 ring-white/10 sm:h-72 sm:w-56 sm:rounded-[1.5rem]"
+              className="relative rounded-[1rem] object-cover shadow-xl ring-1 ring-white/10 sm:rounded-[1.5rem]"
+              style={{ width: "clamp(7rem, 28vw, 14rem)", height: "clamp(9rem, 36vw, 18rem)" }}
             />
           </motion.div>
         </div>
 
         {/* Contact strip */}
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        <div className="mt-5 grid gap-2.5 sm:mt-6 sm:grid-cols-2 sm:gap-3">
           <ContactPill
             icon={<Mail className="h-4 w-4" />}
             label="jayaputrasyaipul7@gmail.com"
@@ -115,7 +116,7 @@ function AboutPage() {
           hidden: {},
           show: { transition: { staggerChildren: 0.08 } },
         }}
-        className="mt-8 grid gap-5 sm:grid-cols-2"
+        className="mt-6 grid gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-5"
       >
         <InfoCard icon={<Heart className="h-4 w-4" />} title="Soft skill">
           <TwoCol
@@ -214,7 +215,7 @@ function InfoCard({
       variants={fadeUp}
       whileHover={{ y: -3 }}
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
-      className="surface-card rounded-[1.5rem] p-5 sm:p-6"
+      className="surface-card rounded-[1.25rem] p-4 sm:rounded-[1.5rem] sm:p-6"
     >
       <div className="flex items-center gap-3">
         <span className="surface-primary grid h-8 w-8 place-items-center rounded-xl">

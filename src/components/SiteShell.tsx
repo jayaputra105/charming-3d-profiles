@@ -35,24 +35,24 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="relative min-h-screen overflow-hidden text-foreground">
-      <header className="sticky top-0 z-40 px-4 pt-4 sm:px-6">
-        <div className="surface-card mx-auto flex max-w-6xl items-center justify-between rounded-full px-3 py-2 sm:px-5">
-          <Link to="/" className="flex items-center gap-2 pl-1 font-semibold tracking-tight">
-            <span className="surface-primary grid h-9 w-9 place-items-center rounded-full">
-              <Sparkles className="h-4 w-4" />
+      <header className="sticky top-0 z-40 px-3 pt-3 sm:px-6 sm:pt-4">
+        <div className="surface-card mx-auto flex max-w-6xl items-center justify-between gap-2 rounded-full px-2 py-1.5 sm:px-5 sm:py-2">
+          <Link to="/" className="flex min-w-0 items-center gap-2 pl-1 font-semibold tracking-tight">
+            <span className="surface-primary grid h-8 w-8 shrink-0 place-items-center rounded-full sm:h-9 sm:w-9">
+              <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             </span>
-            <span className="text-sm sm:text-base">Jaya Putra</span>
+            <span className="hidden truncate text-sm sm:inline sm:text-base">Jaya Putra</span>
           </Link>
-          <nav className="flex items-center gap-1 text-xs sm:text-sm">
+          <nav className="flex items-center gap-0.5 text-[11px] sm:gap-1 sm:text-sm">
             {nav.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 activeOptions={{ exact: item.to === "/" }}
-                className="rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:text-foreground"
+                className="rounded-full px-2 py-1.5 text-muted-foreground transition-colors hover:text-foreground sm:px-3"
                 activeProps={{
                   className:
-                    "surface-primary rounded-full px-3 py-1.5 font-medium",
+                    "surface-primary rounded-full px-2 py-1.5 font-medium sm:px-3",
                 }}
               >
                 {item.label}
@@ -73,14 +73,14 @@ export function SiteShell({ children }: { children: ReactNode }) {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -40 }}
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-8 sm:py-14 touch-pan-y"
+          className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-8 sm:py-14 touch-pan-y"
         >
           {children}
         </motion.main>
       </AnimatePresence>
 
-      <footer className="mt-16">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 py-8 text-sm text-muted-foreground sm:flex-row sm:px-8">
+      <footer className="mt-12 sm:mt-16">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-muted-foreground sm:flex-row sm:px-8 sm:py-8 sm:text-sm">
           <p>&copy; {new Date().getFullYear()} Jaya Putra Syaipul.</p>
           <Link to="/tc" className="hover:text-foreground hover:underline">
             Syarat &amp; Ketentuan
@@ -93,13 +93,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
 export function SectionTitle({ kicker, title }: { kicker?: string; title: string }) {
   return (
-    <div className="mb-10">
+    <div className="mb-8 sm:mb-10">
       {kicker && (
-        <span className="chip inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-widest">
+        <span className="chip inline-block rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-widest sm:text-xs">
           {kicker}
         </span>
       )}
-      <h1 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">{title}</h1>
+      <h1 className="mt-3 font-black tracking-tight sm:mt-4" style={{ fontSize: "clamp(1.5rem, 5vw, 3rem)" }}>{title}</h1>
     </div>
   );
 }
@@ -112,7 +112,7 @@ export function GlassCard({
   className?: string;
 }) {
   return (
-    <div className={`surface-card rounded-3xl p-6 sm:p-8 ${className}`}>
+    <div className={`surface-card rounded-2xl p-5 sm:rounded-3xl sm:p-8 ${className}`}>
       {children}
     </div>
   );
