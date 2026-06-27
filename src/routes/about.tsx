@@ -54,12 +54,12 @@ function AboutPage() {
               <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> About me
             </div>
             <p className="mt-3 leading-relaxed text-muted-foreground sm:mt-6" style={{ fontSize: "clamp(0.8rem, 2vw, 1rem)" }}>
-              Hi, my name is{" "}
+              Halo, nama saya{" "}
               <span className="font-semibold text-foreground">Jaya Putra</span>.
-              I am a Fullstack Web Developer based in Indonesia, blending
-              experience across web, mobile, and design. My mission: shipping
-              fast, secure, and human-friendly digital products that help
-              businesses grow.
+              Saya adalah Fullstack Web Developer yang berbasis di Indonesia,
+              dengan pengalaman di bidang web, mobile, dan desain. Misi saya:
+              menghadirkan produk digital yang cepat, aman, dan ramah pengguna
+              untuk membantu bisnis berkembang.
             </p>
           </div>
 

@@ -1,7 +1,7 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { AnimatePresence, motion, type PanInfo } from "framer-motion";
-import logoAsset from "@/assets/logo.png.asset.json";
+import logoAsset from "@/assets/logo-new.png.asset.json";
 
 const nav = [
   { to: "/", label: "Home" },
