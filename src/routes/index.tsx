@@ -55,7 +55,7 @@ function Home() {
               <img
                 src={profileUrl}
                 alt="Foto profil Jaya Putra Syaipul"
-                className="block h-16 w-16 rounded-full object-cover object-top ring-2 ring-background sm:h-28 sm:w-28 md:h-32 md:w-32"
+                className="block h-16 w-16 rounded-full object-cover object-center ring-2 ring-background sm:h-28 sm:w-28 md:h-32 md:w-32"
               />
             </div>
           </div>
