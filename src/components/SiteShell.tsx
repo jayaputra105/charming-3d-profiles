@@ -1,7 +1,39 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { AnimatePresence, motion, type PanInfo } from "framer-motion";
-import logoAsset from "@/assets/logo-jp.png.asset.json";
+
+function JPSLogo({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 64 64" className={className} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="jps-ring" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#a855f7" />
+          <stop offset="50%" stopColor="#8b5cf6" />
+          <stop offset="100%" stopColor="#6d28d9" />
+        </linearGradient>
+        <linearGradient id="jps-text" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="100%" stopColor="#ede9fe" />
+        </linearGradient>
+      </defs>
+      <circle cx="32" cy="32" r="30" fill="url(#jps-ring)" />
+      <circle cx="32" cy="32" r="30" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+      <text
+        x="32"
+        y="33"
+        textAnchor="middle"
+        dominantBaseline="central"
+        fontFamily="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
+        fontWeight="900"
+        fontSize="26"
+        letterSpacing="-1"
+        fill="url(#jps-text)"
+      >
+        JPS
+      </text>
+    </svg>
+  );
+}
 
 const nav = [
   { to: "/", label: "Home" },
@@ -38,7 +70,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-40 px-3 pt-3 sm:px-6 sm:pt-4">
         <div className="surface-card mx-auto flex max-w-6xl items-center justify-between gap-2 rounded-full px-2 py-1.5 sm:px-5 sm:py-2">
           <Link to="/" className="flex min-w-0 items-center gap-2 pl-1 font-semibold tracking-tight">
-            <img src={logoAsset.url} alt="JP Logo" className="h-6 w-auto shrink-0 object-contain sm:h-7" />
+            <JPSLogo className="h-8 w-8 shrink-0 sm:h-9 sm:w-9" />
             <span className="truncate text-xs sm:text-base">Jaya Putra</span>
           </Link>
           <nav className="flex items-center gap-0.5 text-[11px] sm:gap-1 sm:text-sm">
