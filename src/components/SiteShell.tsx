@@ -1,7 +1,7 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { AnimatePresence, motion, type PanInfo } from "framer-motion";
-import logoAsset from "@/assets/logo-new.png.asset.json";
+import logoAsset from "@/assets/logo-jp.png.asset.json";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -38,9 +38,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-40 px-3 pt-3 sm:px-6 sm:pt-4">
         <div className="surface-card mx-auto flex max-w-6xl items-center justify-between gap-2 rounded-full px-2 py-1.5 sm:px-5 sm:py-2">
           <Link to="/" className="flex min-w-0 items-center gap-2 pl-1 font-semibold tracking-tight">
-            <span className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white sm:h-11 sm:w-11">
-              <img src={logoAsset.url} alt="JP Logo" className="h-[53px] w-[53px] object-contain" />
-            </span>
+            <img src={logoAsset.url} alt="JP Logo" className="h-6 w-auto shrink-0 object-contain sm:h-7" />
             <span className="truncate text-xs sm:text-base">Jaya Putra</span>
           </Link>
           <nav className="flex items-center gap-0.5 text-[11px] sm:gap-1 sm:text-sm">
