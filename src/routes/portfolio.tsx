@@ -154,6 +154,16 @@ const projects: Project[] = [
     logo: <DamarLogo />,
     bg: "from-amber-400/25 via-red-700/10 to-transparent",
   },
+  {
+    id: 4,
+    title: "SAE Rasa · The Chicken — Restoran Nusantara & Krispi Modern",
+    tags: ["Restoran", "Kuliner", "Nusantara"],
+    description:
+      "Website restoran dua konsep: SAE Rasa (Indonesian Soul Food — ayam bakar kecap warisan keluarga, cumi hitam Madura, nasi bebek) dan SAE The Chicken (Modern Crispy Chicken — ayam geprek, sayap saus BBQ, rice bowl). Dilengkapi menu digital, katalog cabang (Nganjuk & Malang), testimoni, serta pemesanan langsung via WhatsApp tanpa potongan ojek online.",
+    demoUrl: "https://saerasa.vercel.app/",
+    logo: <SaerasaLogo />,
+    bg: "from-red-500/30 via-red-700/10 to-transparent",
+  },
 ];
 
 function PortfolioPage() {
