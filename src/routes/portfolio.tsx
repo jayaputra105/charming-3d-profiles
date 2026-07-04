@@ -123,6 +123,27 @@ function SaerasaLogo() {
   );
 }
 
+function DapoerBufahLogo() {
+  return (
+    <svg viewBox="0 0 200 200" className="h-24 w-24 sm:h-28 sm:w-28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="bufahGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#f59e0b" />
+          <stop offset="1" stopColor="#d97706" />
+        </linearGradient>
+      </defs>
+      <rect width="200" height="200" rx="36" fill="#fff7ed" />
+      <rect x="56" y="62" width="88" height="60" rx="12" fill="#f59e0b" />
+      <rect x="68" y="74" width="64" height="36" rx="6" fill="#fff7ed" />
+      <path d="M76 92 h48 M76 102 h48" stroke="#f59e0b" strokeWidth="3" strokeLinecap="round" />
+      <circle cx="100" cy="148" r="6" fill="#d97706" />
+      <text x="100" y="175" textAnchor="middle" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="16" fill="#92400e" letterSpacing="0.5">
+        DapoerBufah
+      </text>
+    </svg>
+  );
+}
+
 const projects: Project[] = [
   {
     id: 1,
@@ -164,6 +185,16 @@ const projects: Project[] = [
     logo: <SaerasaLogo />,
     bg: "from-red-500/30 via-red-700/10 to-transparent",
   },
+  {
+    id: 5,
+    title: "Dapoer Bu Fah — Katering Rumahan & Nasi Box",
+    tags: ["Katering", "Kuliner", "Nasi Box"],
+    description:
+      "Website katering rumahan Dapoer Bu Fah: spesialis katering harian, nasi kotak, tumpeng, snack box, dan katering acara keluarga/kantor. Menampilkan menu variatif, paket catering unggulan, alasan memilih (rasa rumahan autentik, bahan berkualitas, harga bersahabat), serta pemesanan langsung via WhatsApp.",
+    demoUrl: "https://dapoerbufah.com/",
+    logo: <DapoerBufahLogo />,
+    bg: "from-orange-400/30 via-amber-600/10 to-transparent",
+  },
 ];
 
 function PortfolioPage() {
@@ -171,17 +202,17 @@ function PortfolioPage() {
     <SiteShell>
       <SectionTitle kicker="Portfolio" title="Proyek Pilihan" />
 
-      <div className="space-y-6 sm:space-y-8">
+      <div className="grid gap-6 sm:gap-8">
         {projects.map((p) => (
           <article
             key={p.id}
-            className="surface-card grid items-center gap-5 rounded-2xl p-4 sm:gap-6 sm:rounded-3xl sm:p-5 md:grid-cols-2 md:p-8"
+            className="surface-card grid grid-cols-1 rounded-2xl p-4 sm:rounded-3xl sm:p-5 md:grid-cols-2 md:p-8"
           >
-            <div className="relative order-1 flex items-center justify-center overflow-hidden rounded-xl border border-primary/30 py-8 sm:rounded-2xl sm:py-10 md:order-2 md:py-14">
+            <div className="relative order-1 flex min-h-[200px] items-center justify-center overflow-hidden rounded-xl border border-primary/30 sm:min-h-[240px] md:order-2 md:min-h-[320px]">
               <div className={`absolute -inset-6 -z-10 bg-gradient-to-br ${p.bg} blur-2xl`} />
               {p.logo}
             </div>
-            <div className="order-2 space-y-3 sm:space-y-4 md:order-1">
+            <div className="order-2 flex flex-col justify-center gap-4 p-2 sm:gap-5 md:order-1 md:gap-6 md:p-4">
               <div className="flex flex-wrap gap-2">
                 {p.tags.map((t) => (
                   <span
@@ -198,7 +229,7 @@ function PortfolioPage() {
                 href={p.demoUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-lg shadow-primary/40 transition-transform hover:-translate-y-0.5 sm:px-5 sm:py-2.5 sm:text-sm"
+                className="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-lg shadow-primary/40 transition-transform hover:-translate-y-0.5 sm:px-5 sm:py-2.5 sm:text-sm"
               >
                 Kunjungi Website <ExternalLink className="h-4 w-4" />
               </a>
