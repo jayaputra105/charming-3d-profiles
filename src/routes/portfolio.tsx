@@ -95,6 +95,34 @@ function DamarLogo() {
   );
 }
 
+function SaerasaLogo() {
+  return (
+    <svg viewBox="0 0 200 200" className="h-24 w-24 sm:h-28 sm:w-28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="saerasaGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#ef4444" />
+          <stop offset="1" stopColor="#b91c1c" />
+        </linearGradient>
+      </defs>
+      <rect width="200" height="200" rx="36" fill="#2a0a0a" />
+      <circle cx="100" cy="86" r="44" fill="url(#saerasaGrad)" />
+      <path
+        d="M82 82 q18 -22 36 0 q-8 8 -8 18 q0 6 -4 10 q-12 8 -24 0 q-4 -4 -4 -10 q0 -10 -8 -18 z"
+        fill="#fef3c7"
+      />
+      <circle cx="92" cy="78" r="4" fill="#2a0a0a" />
+      <circle cx="108" cy="78" r="4" fill="#2a0a0a" />
+      <path d="M96 88 q4 4 8 0" fill="none" stroke="#2a0a0a" strokeWidth="2" strokeLinecap="round" />
+      <text x="100" y="150" textAnchor="middle" fontFamily="ui-sans-serif, system-ui" fontWeight="900" fontSize="30" fill="#ef4444" letterSpacing="2">
+        SAE
+      </text>
+      <text x="100" y="172" textAnchor="middle" fontFamily="ui-sans-serif, system-ui" fontWeight="600" fontSize="10" fill="#fca5a5" letterSpacing="1.5">
+        RASA · THE CHICKEN
+      </text>
+    </svg>
+  );
+}
+
 const projects: Project[] = [
   {
     id: 1,
