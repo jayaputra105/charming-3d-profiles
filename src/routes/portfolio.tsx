@@ -123,6 +123,27 @@ function SaerasaLogo() {
   );
 }
 
+function DapoerBufahLogo() {
+  return (
+    <svg viewBox="0 0 200 200" className="h-24 w-24 sm:h-28 sm:w-28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="bufahGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#f59e0b" />
+          <stop offset="1" stopColor="#d97706" />
+        </linearGradient>
+      </defs>
+      <rect width="200" height="200" rx="36" fill="#fff7ed" />
+      <rect x="56" y="62" width="88" height="60" rx="12" fill="#f59e0b" />
+      <rect x="68" y="74" width="64" height="36" rx="6" fill="#fff7ed" />
+      <path d="M76 92 h48 M76 102 h48" stroke="#f59e0b" strokeWidth="3" strokeLinecap="round" />
+      <circle cx="100" cy="148" r="6" fill="#d97706" />
+      <text x="100" y="175" textAnchor="middle" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="16" fill="#92400e" letterSpacing="0.5">
+        DapoerBufah
+      </text>
+    </svg>
+  );
+}
+
 const projects: Project[] = [
   {
     id: 1,
