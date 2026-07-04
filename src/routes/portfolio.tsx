@@ -9,13 +9,13 @@ export const Route = createFileRoute("/portfolio")({
       {
         name: "description",
         content:
-          "Kumpulan proyek website oleh Jaya Putra Syaipul: e-commerce UMKM, landing page bisnis kuliner, dan katering.",
+          "Kumpulan proyek website oleh Jaya Putra Syaipul: e-commerce UMKM, landing page bisnis kuliner, katering, dan restoran.",
       },
       { property: "og:title", content: "Portfolio — Jaya Putra Syaipul" },
       {
         property: "og:description",
         content:
-          "Kumpulan proyek website oleh Jaya Putra Syaipul: e-commerce UMKM, landing page bisnis kuliner, dan katering.",
+          "Kumpulan proyek website oleh Jaya Putra Syaipul: e-commerce UMKM, landing page bisnis kuliner, katering, dan restoran.",
       },
     ],
   }),
