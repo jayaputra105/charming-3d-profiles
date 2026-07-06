@@ -138,10 +138,8 @@ function AboutPage() {
               "Next.js",
               "TypeScript",
               "Node.js",
-              "MongoDB",
+              "NeonDB",
               "MySQL",
-              "Figma",
-              "After Effects",
             ].map((t) => (
               <span
                 key={t}
