@@ -219,6 +219,16 @@ const projects: Project[] = [
     logo: <DapoerBufahLogo />,
     bg: "from-orange-400/30 via-amber-600/10 to-transparent",
   },
+  {
+    id: 6,
+    title: "Zettapedia — Knowledge Hub & Ensiklopedia Digital",
+    tags: ["Knowledge Hub", "Web App", "Ensiklopedia"],
+    description:
+      "Platform Zettapedia: knowledge hub digital berisi kumpulan artikel, referensi, dan pengetahuan yang mudah dijelajahi. Menampilkan pencarian cepat, kategori terstruktur, tampilan modern dan responsif, cocok untuk komunitas belajar, dokumentasi, maupun ensiklopedia niche.",
+    demoUrl: "https://zettapedia.vercel.app/",
+    logo: <ZettapediaLogo />,
+    bg: "from-sky-500/30 via-indigo-600/10 to-transparent",
+  },
 ];
 
 function PortfolioPage() {
