@@ -144,6 +144,30 @@ function DapoerBufahLogo() {
   );
 }
 
+function ZettapediaLogo() {
+  return (
+    <svg viewBox="0 0 200 200" className="h-24 w-24 sm:h-28 sm:w-28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="zettaGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#0ea5e9" />
+          <stop offset="1" stopColor="#6366f1" />
+        </linearGradient>
+      </defs>
+      <rect width="200" height="200" rx="36" fill="#0b1120" />
+      <circle cx="100" cy="90" r="52" fill="url(#zettaGrad)" />
+      <text x="100" y="108" textAnchor="middle" fontFamily="Georgia, serif" fontWeight="900" fontSize="64" fill="#ffffff">
+        Z
+      </text>
+      <text x="100" y="158" textAnchor="middle" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="18" fill="#e0e7ff" letterSpacing="1">
+        Zettapedia
+      </text>
+      <text x="100" y="178" textAnchor="middle" fontFamily="ui-sans-serif, system-ui" fontWeight="600" fontSize="10" fill="#94a3b8" letterSpacing="2">
+        KNOWLEDGE HUB
+      </text>
+    </svg>
+  );
+}
+
 const projects: Project[] = [
   {
     id: 1,
