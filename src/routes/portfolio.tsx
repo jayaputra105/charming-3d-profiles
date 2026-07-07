@@ -239,41 +239,48 @@ function PortfolioPage() {
     <SiteShell>
       <SectionTitle kicker="Portfolio" title="Proyek Pilihan" />
 
-      <div className="grid gap-6 sm:gap-8">
+      <RevealStagger className="grid gap-6 sm:gap-8" stagger={0.12}>
         {projects.map((p) => (
-          <article
-            key={p.id}
-            className="surface-card grid grid-cols-1 rounded-2xl p-4 sm:rounded-3xl sm:p-5 md:grid-cols-2 md:p-8"
-          >
-            <div className="relative order-1 flex min-h-[200px] items-center justify-center overflow-hidden rounded-xl border border-primary/30 sm:min-h-[240px] md:order-2 md:min-h-[320px]">
-              <div className={`absolute -inset-6 -z-10 bg-gradient-to-br ${p.bg} blur-2xl`} />
-              {p.logo}
-            </div>
-            <div className="order-2 flex flex-col justify-center gap-4 p-2 sm:gap-5 md:order-1 md:gap-6 md:p-4">
-              <div className="flex flex-wrap gap-2">
-                {p.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full bg-primary/15 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary ring-1 ring-primary/40 sm:px-3 sm:py-1 sm:text-xs"
-                  >
-                    {t}
-                  </span>
-                ))}
+          <RevealItem key={p.id}>
+            <motion.article
+              whileHover={{ y: -6 }}
+              transition={{ type: "spring", stiffness: 260, damping: 22 }}
+              className="surface-card group grid grid-cols-1 rounded-2xl p-4 sm:rounded-3xl sm:p-5 md:grid-cols-2 md:p-8"
+              style={{ perspective: 1000 }}
+            >
+              <div className="relative order-1 flex min-h-[200px] items-center justify-center overflow-hidden rounded-xl border border-primary/30 transition-all duration-500 group-hover:border-primary/50 group-hover:shadow-[0_0_40px_-10px_var(--primary-bright)] sm:min-h-[240px] md:order-2 md:min-h-[320px]">
+                <div className={`absolute -inset-6 -z-10 bg-gradient-to-br ${p.bg} blur-2xl transition-all duration-500 group-hover:opacity-80`} />
+                <div className="transition-transform duration-500 group-hover:scale-105">
+                  {p.logo}
+                </div>
               </div>
-              <h2 className="font-black tracking-tight" style={{ fontSize: "clamp(1.125rem, 3.5vw, 1.5rem)" }}>{p.title}</h2>
-              <p className="leading-relaxed text-muted-foreground" style={{ fontSize: "clamp(0.85rem, 2vw, 1rem)" }}>{p.description}</p>
-              <a
-                href={p.demoUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-lg shadow-primary/40 transition-transform hover:-translate-y-0.5 sm:px-5 sm:py-2.5 sm:text-sm"
-              >
-                Kunjungi Website <ExternalLink className="h-4 w-4" />
-              </a>
-            </div>
-          </article>
+              <div className="order-2 flex flex-col justify-center gap-4 p-2 sm:gap-5 md:order-1 md:gap-6 md:p-4">
+                <div className="flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full bg-primary/15 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary ring-1 ring-primary/40 transition-colors group-hover:bg-primary/25 sm:px-3 sm:py-1 sm:text-xs"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <h2 className="font-black tracking-tight" style={{ fontSize: "clamp(1.125rem, 3.5vw, 1.5rem)" }}>{p.title}</h2>
+                <p className="leading-relaxed text-muted-foreground" style={{ fontSize: "clamp(0.85rem, 2vw, 1rem)" }}>{p.description}</p>
+                <a
+                  href={p.demoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-lg shadow-primary/40 transition-all hover:-translate-y-0.5 hover:shadow-primary/60 sm:px-5 sm:py-2.5 sm:text-sm"
+                >
+                  Kunjungi Website <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+            </motion.article>
+          </RevealItem>
         ))}
-      </div>
+      </RevealStagger>
     </SiteShell>
   );
 }
+
