@@ -30,75 +30,105 @@ function ContactPage() {
   return (
     <SiteShell>
       <SectionTitle kicker="Contact" title="Mari Berkolaborasi" />
-      <p className="-mt-4 mb-8 max-w-2xl text-muted-foreground">
-        Punya rencana membuat website? Sampaikan kebutuhan Anda, saya bantu dari
-        konsep, desain, hingga live di domain Anda sendiri.
-      </p>
+      <Reveal>
+        <p className="-mt-4 mb-8 max-w-2xl text-muted-foreground">
+          Punya rencana membuat website? Sampaikan kebutuhan Anda, saya bantu dari
+          konsep, desain, hingga live di domain Anda sendiri.
+        </p>
+      </Reveal>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <a
-          href={`https://wa.me/${WHATSAPP_NUMBER}?text=Halo%20Jaya%2C%20saya%20tertarik%20bekerja%20sama.`}
-          target="_blank"
-          rel="noreferrer"
-          className="group"
-        >
-          <GlassCard className="h-full transition-all group-hover:-translate-y-1 group-hover:border-primary/60">
-            <div className="flex items-center gap-3">
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-primary to-primary/60 text-primary-foreground shadow-lg shadow-primary/40">
-                <MessageCircle className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-primary">WhatsApp</p>
-                <p className="font-bold">0821-9987-0047</p>
-              </div>
-            </div>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Respon cepat untuk diskusi proyek, estimasi, dan timeline pengerjaan.
-            </p>
-          </GlassCard>
-        </a>
-
-        <a href={`mailto:${EMAIL_ADDRESS}`} className="group">
-          <GlassCard className="h-full transition-all group-hover:-translate-y-1 group-hover:border-primary/60">
-            <div className="flex items-center gap-3">
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-primary to-primary/60 text-primary-foreground shadow-lg shadow-primary/40">
-                <Mail className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-primary">Email</p>
-                <p className="font-bold break-all">{EMAIL_ADDRESS}</p>
-              </div>
-            </div>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Cocok untuk brief panjang, lampiran referensi, atau dokumen kebutuhan.
-            </p>
-          </GlassCard>
-        </a>
-
-        <GlassCard>
-          <div className="flex items-center gap-3">
-            <span className="grid h-11 w-11 place-items-center rounded-xl bg-secondary text-foreground ring-1 ring-primary/40">
-              <Phone className="h-5 w-5 text-primary" />
-            </span>
-            <div>
-              <p className="text-xs uppercase tracking-widest text-primary">Phone</p>
-              <p className="font-bold">+62 821-9987-0047</p>
-            </div>
-          </div>
-        </GlassCard>
-
-        <GlassCard>
-          <div className="flex items-center gap-3">
-            <span className="grid h-11 w-11 place-items-center rounded-xl bg-secondary text-foreground ring-1 ring-primary/40">
-              <MapPin className="h-5 w-5 text-primary" />
-            </span>
-            <div>
-              <p className="text-xs uppercase tracking-widest text-primary">Lokasi</p>
-              <p className="font-bold">Indonesia — Remote Worldwide</p>
-            </div>
-          </div>
-        </GlassCard>
-      </div>
+      <RevealStagger className="grid gap-5 sm:grid-cols-2" stagger={0.1}>
+        <RevealItem>
+          <ContactCard
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Halo%20Jaya%2C%20saya%20tertarik%20bekerja%20sama.`}
+            icon={<MessageCircle className="h-5 w-5" />}
+            label="WhatsApp"
+            value="0821-9987-0047"
+            desc="Respon cepat untuk diskusi proyek, estimasi, dan timeline pengerjaan."
+            primary
+          />
+        </RevealItem>
+        <RevealItem>
+          <ContactCard
+            href={`mailto:${EMAIL_ADDRESS}`}
+            icon={<Mail className="h-5 w-5" />}
+            label="Email"
+            value={EMAIL_ADDRESS}
+            desc="Cocok untuk brief panjang, lampiran referensi, atau dokumen kebutuhan."
+            primary
+          />
+        </RevealItem>
+        <RevealItem>
+          <ContactCard
+            href={`tel:${WHATSAPP_NUMBER}`}
+            icon={<Phone className="h-5 w-5" />}
+            label="Phone"
+            value="+62 821-9987-0047"
+            desc="Tersedia untuk panggilan konsultasi singkat."
+          />
+        </RevealItem>
+        <RevealItem>
+          <ContactCard
+            icon={<MapPin className="h-5 w-5" />}
+            label="Lokasi"
+            value="Indonesia — Remote Worldwide"
+            desc="Bisa bekerja remote untuk klien di mana saja."
+          />
+        </RevealItem>
+      </RevealStagger>
     </SiteShell>
   );
 }
+
+function ContactCard({
+  href,
+  icon,
+  label,
+  value,
+  desc,
+  primary,
+}: {
+  href?: string;
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  desc: string;
+  primary?: boolean;
+}) {
+  const content = (
+    <motion.div
+      whileHover={{ y: -5 }}
+      transition={{ type: "spring", stiffness: 260, damping: 22 }}
+      className="h-full"
+    >
+      <GlassCard className="h-full transition-all duration-300 hover:border-primary/60 hover:shadow-[0_0_40px_-15px_var(--primary-bright)]">
+        <div className="flex items-center gap-3">
+          <span
+            className={`grid h-11 w-11 place-items-center rounded-xl ${
+              primary
+                ? "bg-gradient-to-br from-primary to-primary/60 text-primary-foreground shadow-lg shadow-primary/40"
+                : "bg-secondary text-foreground ring-1 ring-primary/40"
+            }`}
+          >
+            {icon}
+          </span>
+          <div className="min-w-0">
+            <p className="text-xs uppercase tracking-widest text-primary">{label}</p>
+            <p className="font-bold break-all">{value}</p>
+          </div>
+        </div>
+        <p className="mt-4 text-sm text-muted-foreground">{desc}</p>
+      </GlassCard>
+    </motion.div>
+  );
+
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noreferrer" className="group block">
+        {content}
+      </a>
+    );
+  }
+  return content;
+}
+
