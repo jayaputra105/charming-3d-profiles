@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 import { SiteShell, SectionTitle, GlassCard } from "@/components/SiteShell";
+import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
+
 
 const WHATSAPP_NUMBER = "6282199870047";
 const EMAIL_ADDRESS = "jayaputrasyaipul7@gmail.com";
