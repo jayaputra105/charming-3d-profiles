@@ -10,6 +10,9 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { SiteShell } from "@/components/SiteShell";
+import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
+import { TechMarquee } from "@/components/TechMarquee";
+
 
 const profileUrl = "/img/profile-square.png";
 
