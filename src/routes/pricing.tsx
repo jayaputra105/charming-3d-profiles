@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import { Check, Globe, ShoppingBag, Wrench, Sparkles, MessageCircle } from "lucide-react";
 import { SiteShell, SectionTitle, GlassCard } from "@/components/SiteShell";
+import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
+
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
