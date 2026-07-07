@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import { Check, Globe, ShoppingBag, Wrench, Sparkles, MessageCircle } from "lucide-react";
 import { SiteShell, SectionTitle, GlassCard } from "@/components/SiteShell";
+import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
+
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
@@ -63,72 +66,85 @@ function PricingPage() {
     <SiteShell>
       <SectionTitle kicker="Harga" title="Paket Pembuatan Website" />
 
-      <p className="mb-8 max-w-2xl leading-relaxed text-muted-foreground" style={{ fontSize: "clamp(0.9rem, 2.2vw, 1.05rem)" }}>
-        Semua paket sudah <span className="font-semibold text-foreground">termasuk custom domain</span>,
-        <span className="font-semibold text-foreground"> hosting 1 tahun</span>, dan
-        <span className="font-semibold text-foreground"> setup SEO dasar</span>. Harga bisa disesuaikan dengan kebutuhan.
-      </p>
+      <Reveal>
+        <p className="mb-8 max-w-2xl leading-relaxed text-muted-foreground" style={{ fontSize: "clamp(0.9rem, 2.2vw, 1.05rem)" }}>
+          Semua paket sudah <span className="font-semibold text-foreground">termasuk custom domain</span>,
+          <span className="font-semibold text-foreground"> hosting 1 tahun</span>, dan
+          <span className="font-semibold text-foreground"> setup SEO dasar</span>. Harga bisa disesuaikan dengan kebutuhan.
+        </p>
+      </Reveal>
 
-      <div className="grid gap-5 sm:gap-6 md:grid-cols-3">
-        <PackageCard
-          icon={<Globe className="h-5 w-5" />}
-          title="Website Portofolio"
-          price="Mulai 500rb"
-          exampleLabel="Contoh"
-          exampleHref="/portfolio"
-          desc="Cocok untuk personal branding, freelancer, jasa, atau company profile ringkas."
-          features={[
-            "1–3 halaman siap pakai",
-            "Desain modern & responsif",
-            "Custom domain + hosting 1 tahun",
-            "Setup SEO dasar",
-            "Form kontak / WhatsApp",
-          ]}
-          ctaText="Konsultasi Portofolio"
-        />
-        <PackageCard
-          icon={<ShoppingBag className="h-5 w-5" />}
-          title="Landing Page Katalog Belanja"
-          price="Mulai 800rb"
-          exampleLabel="Contoh"
-          exampleHref="https://e-commerce-demo-nine-xi.vercel.app/"
-          desc="Untuk UMKM & bisnis kuliner: pajang produk/menu, tombol pesan cepat via WhatsApp."
-          highlight
-          features={[
-            "Katalog produk / menu",
-            "Keranjang & checkout WhatsApp",
-            "Kategori & pencarian",
-            "Custom domain + hosting 1 tahun",
-            "Setup SEO dasar",
-          ]}
-          ctaText="Konsultasi Katalog"
-        />
-        <PackageCard
-          icon={<Wrench className="h-5 w-5" />}
-          title="Custom"
-          price="Sesuai kebutuhan"
-          exampleLabel="Contoh"
-          exampleHref="https://zettapedia.vercel.app/"
-          desc="Rakit sendiri fitur & jumlah halaman sesuai kebutuhan. Gunakan estimator di bawah."
-          features={[
-            "Pilih landing atau multi-page",
-            "Fitur bebas (CMS, login, payment, dsb.)",
-            "Custom domain + hosting 1 tahun",
-            "Setup SEO dasar",
-            "Estimasi harga transparan",
-          ]}
-          ctaText="Konsultasi Custom"
-        />
-      </div>
+      <RevealStagger className="grid gap-5 sm:gap-6 md:grid-cols-3" stagger={0.1}>
+        <RevealItem>
+          <PackageCard
+            icon={<Globe className="h-5 w-5" />}
+            title="Website Portofolio"
+            price="Mulai 500rb"
+            exampleLabel="Contoh"
+            exampleHref="/portfolio"
+            desc="Cocok untuk personal branding, freelancer, jasa, atau company profile ringkas."
+            features={[
+              "1–3 halaman siap pakai",
+              "Desain modern & responsif",
+              "Custom domain + hosting 1 tahun",
+              "Setup SEO dasar",
+              "Form kontak / WhatsApp",
+            ]}
+            ctaText="Konsultasi Portofolio"
+          />
+        </RevealItem>
+        <RevealItem>
+          <PackageCard
+            icon={<ShoppingBag className="h-5 w-5" />}
+            title="Landing Page Katalog Belanja"
+            price="Mulai 800rb"
+            exampleLabel="Contoh"
+            exampleHref="https://e-commerce-demo-nine-xi.vercel.app/"
+            desc="Untuk UMKM & bisnis kuliner: pajang produk/menu, tombol pesan cepat via WhatsApp."
+            highlight
+            features={[
+              "Katalog produk / menu",
+              "Keranjang & checkout WhatsApp",
+              "Kategori & pencarian",
+              "Custom domain + hosting 1 tahun",
+              "Setup SEO dasar",
+            ]}
+            ctaText="Konsultasi Katalog"
+          />
+        </RevealItem>
+        <RevealItem>
+          <PackageCard
+            icon={<Wrench className="h-5 w-5" />}
+            title="Custom"
+            price="Sesuai kebutuhan"
+            exampleLabel="Contoh"
+            exampleHref="https://zettapedia.vercel.app/"
+            desc="Rakit sendiri fitur & jumlah halaman sesuai kebutuhan. Gunakan estimator di bawah."
+            features={[
+              "Pilih landing atau multi-page",
+              "Fitur bebas (CMS, login, payment, dsb.)",
+              "Custom domain + hosting 1 tahun",
+              "Setup SEO dasar",
+              "Estimasi harga transparan",
+            ]}
+            ctaText="Konsultasi Custom"
+          />
+        </RevealItem>
+      </RevealStagger>
 
-      <CustomEstimator />
+      <Reveal className="mt-10 sm:mt-14">
+        <CustomEstimator />
+      </Reveal>
 
-      <p className="mt-8 text-center text-xs text-muted-foreground sm:text-sm">
-        Harga bersifat estimasi awal. Final harga menyesuaikan kompleksitas & scope setelah diskusi.
-      </p>
+      <Reveal>
+        <p className="mt-8 text-center text-xs text-muted-foreground sm:text-sm">
+          Harga bersifat estimasi awal. Final harga menyesuaikan kompleksitas & scope setelah diskusi.
+        </p>
+      </Reveal>
     </SiteShell>
   );
 }
+
 
 function PackageCard({
   icon,
@@ -155,8 +171,10 @@ function PackageCard({
     `Halo, saya tertarik dengan paket ${title}.`
   )}`;
   return (
-    <div
-      className={`surface-card relative flex h-full flex-col rounded-2xl p-5 sm:rounded-3xl sm:p-7 ${
+    <motion.div
+      whileHover={{ y: -6 }}
+      transition={{ type: "spring", stiffness: 260, damping: 22 }}
+      className={`surface-card relative flex h-full flex-col rounded-2xl p-5 transition-shadow duration-300 hover:shadow-[0_0_40px_-12px_var(--primary-bright)] sm:rounded-3xl sm:p-7 ${
         highlight ? "ring-2 ring-primary/60" : ""
       }`}
     >
@@ -188,7 +206,7 @@ function PackageCard({
           href={waHref}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/40 transition-transform hover:-translate-y-0.5"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/40 transition-all hover:-translate-y-0.5 hover:shadow-primary/60"
         >
           <MessageCircle className="h-4 w-4" /> {ctaText}
         </a>
@@ -197,15 +215,16 @@ function PackageCard({
             href={exampleHref}
             target={exampleHref.startsWith("http") ? "_blank" : undefined}
             rel="noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/30 px-4 py-2 text-xs font-semibold text-muted-foreground hover:text-foreground"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/30 px-4 py-2 text-xs font-semibold text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground"
           >
             {exampleLabel ?? "Lihat contoh"}
           </a>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
+
 
 function CustomEstimator() {
   const [pageType, setPageType] = useState<(typeof PAGE_OPTIONS)[number]["id"]>("landing");
