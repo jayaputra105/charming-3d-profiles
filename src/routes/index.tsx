@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Mail, Phone, Sparkles } from "lucide-react";
+import { ArrowRight, Mail, Phone, Sparkles, MessageSquare, PencilRuler, Code, Rocket } from "lucide-react";
 import { SiteShell, GlassCard } from "@/components/SiteShell";
+import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
+import { TechMarquee } from "@/components/TechMarquee";
+import { DamarLogo } from "./portfolio";
+
 
 const profileUrl = "/img/profile-square.png";
 
