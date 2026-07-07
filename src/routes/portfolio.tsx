@@ -69,7 +69,7 @@ function BakeryLogo() {
   );
 }
 
-function DamarLogo() {
+export function DamarLogo() {
   return (
     <svg viewBox="0 0 200 200" className="h-24 w-24 sm:h-28 sm:w-28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
