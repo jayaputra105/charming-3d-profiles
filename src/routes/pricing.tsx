@@ -171,8 +171,10 @@ function PackageCard({
     `Halo, saya tertarik dengan paket ${title}.`
   )}`;
   return (
-    <div
-      className={`surface-card relative flex h-full flex-col rounded-2xl p-5 sm:rounded-3xl sm:p-7 ${
+    <motion.div
+      whileHover={{ y: -6 }}
+      transition={{ type: "spring", stiffness: 260, damping: 22 }}
+      className={`surface-card relative flex h-full flex-col rounded-2xl p-5 transition-shadow duration-300 hover:shadow-[0_0_40px_-12px_var(--primary-bright)] sm:rounded-3xl sm:p-7 ${
         highlight ? "ring-2 ring-primary/60" : ""
       }`}
     >
@@ -204,7 +206,7 @@ function PackageCard({
           href={waHref}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/40 transition-transform hover:-translate-y-0.5"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/40 transition-all hover:-translate-y-0.5 hover:shadow-primary/60"
         >
           <MessageCircle className="h-4 w-4" /> {ctaText}
         </a>
@@ -213,15 +215,16 @@ function PackageCard({
             href={exampleHref}
             target={exampleHref.startsWith("http") ? "_blank" : undefined}
             rel="noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/30 px-4 py-2 text-xs font-semibold text-muted-foreground hover:text-foreground"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/30 px-4 py-2 text-xs font-semibold text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground"
           >
             {exampleLabel ?? "Lihat contoh"}
           </a>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
+
 
 function CustomEstimator() {
   const [pageType, setPageType] = useState<(typeof PAGE_OPTIONS)[number]["id"]>("landing");
