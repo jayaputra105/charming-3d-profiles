@@ -61,7 +61,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="relative min-h-screen overflow-hidden text-foreground">
+      <AmbientBackground />
       <header className="sticky top-0 z-40 px-3 pt-3 sm:px-6 sm:pt-4">
+
         <div className="surface-card mx-auto flex max-w-6xl items-center justify-between gap-2 rounded-full px-2 py-1.5 sm:px-5 sm:py-2">
           <Link to="/" className="flex min-w-0 items-center gap-2 pl-1 font-semibold tracking-tight">
             <JPSLogo className="h-8 w-8 shrink-0 sm:h-9 sm:w-9" />
