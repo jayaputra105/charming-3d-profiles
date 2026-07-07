@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 import { SiteShell, SectionTitle } from "@/components/SiteShell";
+import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
+
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
