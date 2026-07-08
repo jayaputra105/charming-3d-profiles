@@ -147,26 +147,41 @@ function DapoerBufahLogo() {
   );
 }
 
-function ZettapediaLogo() {
+function BeautyhaulLogo() {
   return (
     <svg viewBox="0 0 200 200" className="h-24 w-24 sm:h-28 sm:w-28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
-        <linearGradient id="zettaGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#0ea5e9" />
-          <stop offset="1" stopColor="#6366f1" />
+        <linearGradient id="beautyGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#f472b6" />
+          <stop offset="1" stopColor="#db2777" />
         </linearGradient>
       </defs>
-      <rect width="200" height="200" rx="36" fill="#0b1120" />
-      <circle cx="100" cy="90" r="52" fill="url(#zettaGrad)" />
-      <text x="100" y="108" textAnchor="middle" fontFamily="Georgia, serif" fontWeight="900" fontSize="64" fill="#ffffff">
-        Z
-      </text>
-      <text x="100" y="158" textAnchor="middle" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="18" fill="#e0e7ff" letterSpacing="1">
-        Zettapedia
-      </text>
-      <text x="100" y="178" textAnchor="middle" fontFamily="ui-sans-serif, system-ui" fontWeight="600" fontSize="10" fill="#94a3b8" letterSpacing="2">
-        KNOWLEDGE HUB
-      </text>
+      <rect width="200" height="200" rx="36" fill="#2a0a18" />
+      <path d="M70 70 h60 l10 90 a8 8 0 0 1 -8 8 h-64 a8 8 0 0 1 -8 -8 z" fill="url(#beautyGrad)" />
+      <path d="M85 70 v-16 a15 15 0 0 1 30 0 v16" fill="none" stroke="#f9a8d4" strokeWidth="6" strokeLinecap="round" />
+      <circle cx="130" cy="60" r="14" fill="#f9a8d4" />
+      <path d="M126 58 l4 6 l8 -10" fill="none" stroke="#db2777" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <text x="100" y="172" textAnchor="middle" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="18" fill="#fbcfe8" letterSpacing="0.5">Beautyhaul</text>
+    </svg>
+  );
+}
+
+function ArbiprintingLogo() {
+  return (
+    <svg viewBox="0 0 200 200" className="h-24 w-24 sm:h-28 sm:w-28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="arbiGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#22d3ee" />
+          <stop offset="1" stopColor="#3b82f6" />
+        </linearGradient>
+      </defs>
+      <rect width="200" height="200" rx="36" fill="#0f172a" />
+      <rect x="56" y="58" width="88" height="100" rx="12" fill="#1e293b" />
+      <rect x="68" y="70" width="64" height="64" rx="6" fill="url(#arbiGrad)" />
+      <path d="M82 96 h36 M82 112 h24" stroke="#0f172a" strokeWidth="5" strokeLinecap="round" />
+      <circle cx="144" cy="130" r="18" fill="url(#arbiGrad)" />
+      <path d="M138 130 l4 4 l8 -10" fill="none" stroke="#0f172a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <text x="100" y="178" textAnchor="middle" fontFamily="ui-sans-serif, system-ui" fontWeight="800" fontSize="16" fill="#e0f2fe" letterSpacing="0.5">ArbiPrinting</text>
     </svg>
   );
 }
