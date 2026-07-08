@@ -189,46 +189,6 @@ function ArbiprintingLogo() {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Contoh Web E-Commerce UMKM",
-    tags: ["E-Commerce", "UMKM", "Mobile-first"],
-    description:
-      "Website e-commerce untuk UMKM dengan katalog produk, filter kategori (Fashion, Food, Craft, Elektronik), keranjang belanja, pencarian produk, serta panel kelola toko. Mobile-first, ringan, dan siap berjualan tanpa potongan marketplace.",
-    demoUrl: "https://e-commerce-demo-nine-xi.vercel.app/",
-    logo: <TokoKitaLogo />,
-    bg: "from-emerald-500/30 via-emerald-600/10 to-transparent",
-  },
-  {
-    id: 2,
-    title: "Landing Page + Profil Usaha + Katalog Pesanan",
-    tags: ["Landing", "Katalog", "Kuliner"],
-    description:
-      "Website untuk usaha bakery/kuliner: landing page elegan, halaman profil & cerita usaha, katalog pesanan, info lokasi, serta keranjang pesanan. Cocok untuk UMKM kuliner, restoran, atau brand lokal.",
-    demoUrl: "https://bu-siti-bakery.vercel.app/",
-    logo: <BakeryLogo />,
-    bg: "from-amber-500/25 via-orange-700/10 to-transparent",
-  },
-  {
-    id: 3,
-    title: "Damar Catering — Katering Pernikahan & Prasmanan",
-    tags: ["Katering", "Halal", "Balikpapan"],
-    description:
-      "Website resmi Damar Catering Balikpapan: jasa katering pernikahan dan prasmanan halal. Menampilkan hero dengan tagline brand, keunggulan usaha (halal terjamin, rasa autentik, kapasitas besar), katalog menu (pondokan, menu nusantara, snack box, minuman & dessert), serta tombol konsultasi langsung ke WhatsApp.",
-    demoUrl: "https://damar-catering.vercel.app/",
-    logo: <DamarLogo />,
-    bg: "from-amber-400/25 via-red-700/10 to-transparent",
-  },
-  {
-    id: 4,
-    title: "SAE Rasa · The Chicken — Restoran Nusantara & Krispi Modern",
-    tags: ["Restoran", "Kuliner", "Nusantara"],
-    description:
-      "Website restoran dua konsep: SAE Rasa (Indonesian Soul Food — ayam bakar kecap warisan keluarga, cumi hitam Madura, nasi bebek) dan SAE The Chicken (Modern Crispy Chicken — ayam geprek, sayap saus BBQ, rice bowl). Dilengkapi menu digital, katalog cabang (Nganjuk & Malang), testimoni, serta pemesanan langsung via WhatsApp tanpa potongan ojek online.",
-    demoUrl: "https://saerasa.vercel.app/",
-    logo: <SaerasaLogo />,
-    bg: "from-red-500/30 via-red-700/10 to-transparent",
-  },
-  {
-    id: 5,
     title: "Dapoer Bu Fah — Katering Rumahan & Nasi Box",
     tags: ["Katering", "Kuliner", "Nasi Box"],
     description:
@@ -238,14 +198,64 @@ const projects: Project[] = [
     bg: "from-orange-400/30 via-amber-600/10 to-transparent",
   },
   {
-    id: 6,
-    title: "Zettapedia — Knowledge Hub & Ensiklopedia Digital",
-    tags: ["Knowledge Hub", "Web App", "Ensiklopedia"],
+    id: 2,
+    title: "Beautyhaul — E-Commerce Skincare & Kosmetik",
+    tags: ["E-Commerce", "Beauty", "Skincare"],
     description:
-      "Platform Zettapedia: knowledge hub digital berisi kumpulan artikel, referensi, dan pengetahuan yang mudah dijelajahi. Menampilkan pencarian cepat, kategori terstruktur, tampilan modern dan responsif, cocok untuk komunitas belajar, dokumentasi, maupun ensiklopedia niche.",
-    demoUrl: "https://zettapedia.vercel.app/",
-    logo: <ZettapediaLogo />,
-    bg: "from-sky-500/30 via-indigo-600/10 to-transparent",
+      "Website e-commerce kecantikan Beautyhaul: katalog produk skincare dan kosmetik, fitur pencarian, kategori brand, halaman produk detail, serta pengalaman belanja mobile-friendly untuk pelanggan beauty haul.",
+    demoUrl: "https://beautyhaul.com/",
+    logo: <BeautyhaulLogo />,
+    bg: "from-pink-500/30 via-rose-600/10 to-transparent",
+  },
+  {
+    id: 3,
+    title: "ArbiPrinting — Jasa Percetakan Digital & Offset",
+    tags: ["Percetakan", "Printing", "Services"],
+    description:
+      "Website percetakan ArbiPrinting: layanan cetak digital, offset, spanduk, kartu nama, undangan, dan merchandise. Menampilkan katalog produk, portofolio hasil cetak, informasi layanan, serta pemesanan langsung via WhatsApp.",
+    demoUrl: "https://arbiprinting.com/",
+    logo: <ArbiprintingLogo />,
+    bg: "from-cyan-500/30 via-blue-600/10 to-transparent",
+  },
+  {
+    id: 4,
+    title: "Contoh Web E-Commerce UMKM",
+    tags: ["E-Commerce", "UMKM", "Mobile-first"],
+    description:
+      "Website e-commerce untuk UMKM dengan katalog produk, filter kategori (Fashion, Food, Craft, Elektronik), keranjang belanja, pencarian produk, serta panel kelola toko. Mobile-first, ringan, dan siap berjualan tanpa potongan marketplace.",
+    demoUrl: "https://e-commerce-demo-nine-xi.vercel.app/",
+    logo: <TokoKitaLogo />,
+    bg: "from-emerald-500/30 via-emerald-600/10 to-transparent",
+  },
+  {
+    id: 5,
+    title: "Landing Page + Profil Usaha + Katalog Pesanan",
+    tags: ["Landing", "Katalog", "Kuliner"],
+    description:
+      "Website untuk usaha bakery/kuliner: landing page elegan, halaman profil & cerita usaha, katalog pesanan, info lokasi, serta keranjang pesanan. Cocok untuk UMKM kuliner, restoran, atau brand lokal.",
+    demoUrl: "https://bu-siti-bakery.vercel.app/",
+    logo: <BakeryLogo />,
+    bg: "from-amber-500/25 via-orange-700/10 to-transparent",
+  },
+  {
+    id: 6,
+    title: "Damar Catering — Katering Pernikahan & Prasmanan",
+    tags: ["Katering", "Halal", "Balikpapan"],
+    description:
+      "Website resmi Damar Catering Balikpapan: jasa katering pernikahan dan prasmanan halal. Menampilkan hero dengan tagline brand, keunggulan usaha (halal terjamin, rasa autentik, kapasitas besar), katalog menu (pondokan, menu nusantara, snack box, minuman & dessert), serta tombol konsultasi langsung ke WhatsApp.",
+    demoUrl: "https://damar-catering.vercel.app/",
+    logo: <DamarLogo />,
+    bg: "from-amber-400/25 via-red-700/10 to-transparent",
+  },
+  {
+    id: 7,
+    title: "SAE Rasa · The Chicken — Restoran Nusantara & Krispi Modern",
+    tags: ["Restoran", "Kuliner", "Nusantara"],
+    description:
+      "Website restoran dua konsep: SAE Rasa (Indonesian Soul Food — ayam bakar kecap warisan keluarga, cumi hitam Madura, nasi bebek) dan SAE The Chicken (Modern Crispy Chicken — ayam geprek, sayap saus BBQ, rice bowl). Dilengkapi menu digital, katalog cabang (Nganjuk & Malang), testimoni, serta pemesanan langsung via WhatsApp tanpa potongan ojek online.",
+    demoUrl: "https://saerasa.vercel.app/",
+    logo: <SaerasaLogo />,
+    bg: "from-red-500/30 via-red-700/10 to-transparent",
   },
 ];
 
