@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Globe, ShoppingBag, Wrench, Sparkles, MessageCircle } from "lucide-react";
+import { Check, Globe, ShoppingBag, Wrench, Sparkles, MessageCircle, Timer, Flame } from "lucide-react";
 import { SiteShell, SectionTitle, GlassCard } from "@/components/SiteShell";
 import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
 
@@ -13,13 +13,13 @@ export const Route = createFileRoute("/pricing")({
       {
         name: "description",
         content:
-          "Paket harga pembuatan website: Portofolio mulai 500rb, Landing Page Katalog Belanja mulai 800rb, dan paket Custom sesuai kebutuhan. Sudah termasuk custom domain, hosting 1 tahun, dan setup SEO dasar.",
+          "PROMO 20% OFF (2 minggu). Paket harga pembuatan website: Portofolio mulai 500rb, Landing Page Katalog Belanja mulai 800rb, dan paket Custom sesuai kebutuhan. Sudah termasuk custom domain, hosting 1 tahun, dan setup SEO dasar.",
       },
       { property: "og:title", content: "Harga — Jaya Putra Syaipul" },
       {
         property: "og:description",
         content:
-          "Paket harga pembuatan website: Portofolio mulai 500rb, Katalog Belanja mulai 800rb, dan Custom sesuai kebutuhan. Termasuk domain, hosting 1 tahun & SEO dasar.",
+          "PROMO 20% OFF selama 2 minggu. Portofolio mulai 500rb, Katalog Belanja mulai 800rb, dan Custom sesuai kebutuhan. Termasuk domain, hosting 1 tahun & SEO dasar.",
       },
     ],
   }),
@@ -28,12 +28,18 @@ export const Route = createFileRoute("/pricing")({
 
 const WHATSAPP_NUMBER = "6282199870047";
 
+// Promo: 20% off, berlaku 2 minggu sejak tanggal ini.
+const PROMO_DISCOUNT = 0.2;
+const PROMO_END = new Date("2026-07-25T23:59:59+07:00");
+
 const formatIDR = (n: number) =>
   new Intl.NumberFormat("id-ID", {
     style: "currency",
     currency: "IDR",
     maximumFractionDigits: 0,
   }).format(n);
+
+const applyPromo = (n: number) => Math.round((n * (1 - PROMO_DISCOUNT)) / 1000) * 1000;
 
 type Feature = {
   id: string;
@@ -67,6 +73,10 @@ function PricingPage() {
       <SectionTitle kicker="Harga" title="Paket Pembuatan Website" />
 
       <Reveal>
+        <PromoBanner />
+      </Reveal>
+
+      <Reveal>
         <p className="mb-8 max-w-2xl leading-relaxed text-muted-foreground" style={{ fontSize: "clamp(0.9rem, 2.2vw, 1.05rem)" }}>
           Semua paket sudah <span className="font-semibold text-foreground">termasuk custom domain</span>,
           <span className="font-semibold text-foreground"> hosting 1 tahun</span>, dan
@@ -79,7 +89,9 @@ function PricingPage() {
           <PackageCard
             icon={<Globe className="h-5 w-5" />}
             title="Website Portofolio"
-            price="Mulai 500rb"
+            originalPrice="Rp 500rb"
+            promoPrice="Rp 400rb"
+            priceSuffix="/ mulai"
             exampleLabel="Contoh"
             exampleHref="/portfolio"
             desc="Cocok untuk personal branding, freelancer, jasa, atau company profile ringkas."
@@ -97,7 +109,9 @@ function PricingPage() {
           <PackageCard
             icon={<ShoppingBag className="h-5 w-5" />}
             title="Landing Page Katalog Belanja"
-            price="Mulai 800rb"
+            originalPrice="Rp 800rb"
+            promoPrice="Rp 640rb"
+            priceSuffix="/ mulai"
             exampleLabel="Contoh"
             exampleHref="https://e-commerce-demo-nine-xi.vercel.app/"
             desc="Untuk UMKM & bisnis kuliner: pajang produk/menu, tombol pesan cepat via WhatsApp."
@@ -116,7 +130,8 @@ function PricingPage() {
           <PackageCard
             icon={<Wrench className="h-5 w-5" />}
             title="Custom"
-            price="Sesuai kebutuhan"
+            promoPrice="Hemat 20%"
+            priceSuffix="sesuai kebutuhan"
             exampleLabel="Contoh"
             exampleHref="https://zettapedia.vercel.app/"
             desc="Rakit sendiri fitur & jumlah halaman sesuai kebutuhan. Gunakan estimator di bawah."
@@ -146,10 +161,83 @@ function PricingPage() {
 }
 
 
+function useCountdown(target: Date) {
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const diff = Math.max(0, target.getTime() - now);
+  const days = Math.floor(diff / 86_400_000);
+  const hours = Math.floor((diff % 86_400_000) / 3_600_000);
+  const minutes = Math.floor((diff % 3_600_000) / 60_000);
+  const seconds = Math.floor((diff % 60_000) / 1000);
+  return { diff, days, hours, minutes, seconds };
+}
+
+function PromoBanner() {
+  const { diff, days, hours, minutes, seconds } = useCountdown(PROMO_END);
+  if (diff <= 0) return null;
+
+  const endLabel = PROMO_END.toLocaleDateString("id-ID", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  const Cell = ({ v, l }: { v: number; l: string }) => (
+    <div className="min-w-[54px] rounded-xl border border-primary/30 bg-background/40 px-2 py-2 text-center backdrop-blur">
+      <p className="bg-gradient-to-br from-primary to-accent bg-clip-text text-xl font-black text-transparent tabular-nums sm:text-2xl">
+        {String(v).padStart(2, "0")}
+      </p>
+      <p className="text-[9px] font-semibold uppercase tracking-widest text-muted-foreground sm:text-[10px]">
+        {l}
+      </p>
+    </div>
+  );
+
+  return (
+    <div className="mb-6 overflow-hidden rounded-2xl border border-primary/40 bg-gradient-to-br from-primary/15 via-primary/5 to-accent/15 p-4 shadow-lg shadow-primary/20 sm:mb-8 sm:p-5">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-start gap-3">
+          <motion.span
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{ repeat: Infinity, duration: 1.6 }}
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/40"
+          >
+            <Flame className="h-5 w-5" />
+          </motion.span>
+          <div>
+            <p className="flex flex-wrap items-center gap-2 text-sm font-bold sm:text-base">
+              PROMO SPESIAL 20% OFF
+              <span className="rounded-full bg-primary/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary">
+                2 Minggu
+              </span>
+            </p>
+            <p className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground sm:text-sm">
+              <Timer className="h-3.5 w-3.5" />
+              Berakhir {endLabel}
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <Cell v={days} l="Hari" />
+          <Cell v={hours} l="Jam" />
+          <Cell v={minutes} l="Menit" />
+          <Cell v={seconds} l="Detik" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 function PackageCard({
   icon,
   title,
-  price,
+  originalPrice,
+  promoPrice,
+  priceSuffix,
   desc,
   features,
   ctaText,
@@ -159,7 +247,9 @@ function PackageCard({
 }: {
   icon: React.ReactNode;
   title: string;
-  price: string;
+  originalPrice?: string;
+  promoPrice: string;
+  priceSuffix?: string;
   desc: string;
   features: string[];
   ctaText: string;
@@ -168,7 +258,7 @@ function PackageCard({
   exampleHref?: string;
 }) {
   const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    `Halo, saya tertarik dengan paket ${title}.`
+    `Halo, saya tertarik dengan paket ${title} (promo 20% off).`
   )}`;
   return (
     <motion.div
@@ -178,6 +268,9 @@ function PackageCard({
         highlight ? "ring-2 ring-primary/60" : ""
       }`}
     >
+      <span className="absolute -top-3 right-5 rounded-full bg-gradient-to-r from-primary to-accent px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary-foreground shadow-lg shadow-primary/40">
+        -20%
+      </span>
       {highlight && (
         <span className="absolute -top-3 left-5 rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary-foreground shadow-lg shadow-primary/40">
           Populer
@@ -187,9 +280,23 @@ function PackageCard({
         <span className="surface-primary grid h-10 w-10 place-items-center rounded-xl">{icon}</span>
         <h2 className="text-lg font-bold sm:text-xl">{title}</h2>
       </div>
-      <p className="mt-4 bg-gradient-to-br from-primary to-accent bg-clip-text text-2xl font-black text-transparent sm:text-3xl">
-        {price}
-      </p>
+
+      <div className="mt-4 space-y-1">
+        {originalPrice && (
+          <p className="text-sm font-semibold text-muted-foreground/80 line-through decoration-destructive/70 decoration-2">
+            {originalPrice}
+          </p>
+        )}
+        <p className="flex flex-wrap items-baseline gap-2">
+          <span className="bg-gradient-to-br from-primary to-accent bg-clip-text text-2xl font-black text-transparent sm:text-3xl">
+            {promoPrice}
+          </span>
+          {priceSuffix && (
+            <span className="text-xs font-medium text-muted-foreground">{priceSuffix}</span>
+          )}
+        </p>
+      </div>
+
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
 
       <ul className="mt-5 space-y-2.5 text-sm">
@@ -239,11 +346,13 @@ function CustomEstimator() {
     [selected]
   );
   const total = basePrice + featurePrice;
+  const promoTotal = applyPromo(total);
+  const saved = total - promoTotal;
 
   const summaryText = () => {
     const page = PAGE_OPTIONS.find((p) => p.id === pageType)?.label ?? "";
     const feats = FEATURES.filter((f) => selected[f.id]).map((f) => `- ${f.label}`).join("\n");
-    return `Halo, saya mau konsultasi paket Custom:\n\nJenis: ${page}\nFitur:\n${feats || "- (belum ada)"}\n\nEstimasi: ${formatIDR(total)}`;
+    return `Halo, saya mau konsultasi paket Custom (promo 20% off):\n\nJenis: ${page}\nFitur:\n${feats || "- (belum ada)"}\n\nHarga normal: ${formatIDR(total)}\nHarga promo: ${formatIDR(promoTotal)}`;
   };
 
   const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(summaryText())}`;
@@ -325,10 +434,23 @@ function CustomEstimator() {
 
       <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-primary/30 bg-primary/5 p-5 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-xs uppercase tracking-widest text-muted-foreground">Estimasi total</p>
-          <p className="mt-1 bg-gradient-to-br from-primary to-accent bg-clip-text text-3xl font-black text-transparent sm:text-4xl">
+          <div className="flex items-center gap-2">
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">Estimasi total</p>
+            <span className="rounded-full bg-gradient-to-r from-primary to-accent px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary-foreground">
+              -20%
+            </span>
+          </div>
+          <p className="mt-1 text-sm font-semibold text-muted-foreground line-through decoration-destructive/70 decoration-2">
             {formatIDR(total)}
           </p>
+          <p className="mt-0.5 bg-gradient-to-br from-primary to-accent bg-clip-text text-3xl font-black text-transparent sm:text-4xl">
+            {formatIDR(promoTotal)}
+          </p>
+          {saved > 0 && (
+            <p className="mt-1 text-xs font-semibold text-primary">
+              Hemat {formatIDR(saved)} — promo 2 minggu
+            </p>
+          )}
           <p className="mt-1 text-xs text-muted-foreground">
             Sudah termasuk custom domain, hosting 1 tahun & setup SEO dasar.
           </p>
