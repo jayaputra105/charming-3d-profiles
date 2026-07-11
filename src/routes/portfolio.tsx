@@ -8,17 +8,48 @@ import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
-      { title: "Portfolio — Jaya Putra Syaipul" },
+      { title: "Portofolio Proyek Website — Jaya Putra Syaipul" },
       {
         name: "description",
         content:
-          "Kumpulan proyek website oleh Jaya Putra Syaipul: e-commerce UMKM, landing page bisnis kuliner, katering, restoran, percetakan, dan beauty haul.",
+          "Portofolio proyek website oleh Jaya Putra Syaipul: Beautyhaul, Arbi Printing, e-commerce UMKM, landing page bisnis kuliner, katering, restoran, percetakan & beauty haul.",
       },
-      { property: "og:title", content: "Portfolio — Jaya Putra Syaipul" },
+      {
+        name: "keywords",
+        content:
+          "portofolio website, contoh website UMKM, jasa landing page, contoh e-commerce, jasa website katering, website restoran, website percetakan",
+      },
+      { property: "og:title", content: "Portofolio Proyek Website — Jaya Putra Syaipul" },
       {
         property: "og:description",
         content:
-          "Kumpulan proyek website oleh Jaya Putra Syaipul: e-commerce UMKM, landing page bisnis kuliner, katering, restoran, percetakan, dan beauty haul.",
+          "Kumpulan proyek: Beautyhaul, Arbi Printing, e-commerce UMKM, landing page kuliner, katering, restoran, percetakan & beauty haul.",
+      },
+      { property: "og:url", content: "/portfolio" },
+      { property: "og:image", content: "/img/ecommerce-demo.png" },
+      { name: "twitter:image", content: "/img/ecommerce-demo.png" },
+    ],
+    links: [{ rel: "canonical", href: "/portfolio" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Portofolio Proyek Website",
+          description: "Kumpulan proyek website yang dikerjakan oleh Jaya Putra Syaipul.",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "/" },
+            { "@type": "ListItem", position: 2, name: "Portfolio", item: "/portfolio" },
+          ],
+        }),
       },
     ],
   }),

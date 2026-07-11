@@ -11,15 +11,39 @@ const EMAIL_ADDRESS = "jayaputrasyaipul7@gmail.com";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Jaya Putra Syaipul" },
+      { title: "Kontak — Diskusi Proyek Website | Jaya Putra Syaipul" },
       {
         name: "description",
-        content: "Hubungi Jaya Putra Syaipul via WhatsApp atau Email untuk diskusi proyek website.",
+        content:
+          "Hubungi Jaya Putra Syaipul via WhatsApp (+62 821-9987-0047) atau email jayaputrasyaipul7@gmail.com untuk diskusi proyek website Anda.",
       },
-      { property: "og:title", content: "Contact — Jaya Putra Syaipul" },
+      {
+        name: "keywords",
+        content:
+          "kontak web developer, jasa pembuatan website whatsapp, hire fullstack developer, konsultasi website",
+      },
+      { property: "og:title", content: "Kontak — Diskusi Proyek Website" },
       {
         property: "og:description",
-        content: "Hubungi Jaya Putra Syaipul via WhatsApp atau Email untuk diskusi proyek website.",
+        content: "Hubungi via WhatsApp atau Email untuk diskusi proyek website Anda.",
+      },
+      { property: "og:url", content: "/contact" },
+    ],
+    links: [{ rel: "canonical", href: "/contact" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Kontak Jaya Putra Syaipul",
+          mainEntity: {
+            "@type": "Person",
+            name: "Jaya Putra Syaipul",
+            email: "jayaputrasyaipul7@gmail.com",
+            telephone: "+6282199870047",
+          },
+        }),
       },
     ],
   }),

@@ -15,17 +15,43 @@ const EMAIL_ADDRESS = "jayaputrasyaipul7@gmail.com";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Jaya Putra Syaipul — Fullstack Web Developer" },
+      { title: "Jaya Putra Syaipul — Jasa Pembuatan Website Fullstack" },
       {
         name: "description",
         content:
-          "Portofolio Jaya Putra Syaipul, Fullstack Web Developer yang membangun website cepat, stabil, dan mudah digunakan.",
+          "Portofolio Jaya Putra Syaipul, Fullstack Web Developer. Jasa pembuatan website portofolio, landing page katalog belanja UMKM, & website custom. Sudah termasuk domain, hosting 1 tahun & SEO dasar.",
       },
-      { property: "og:title", content: "Jaya Putra Syaipul — Fullstack Web Developer" },
+      {
+        name: "keywords",
+        content:
+          "jasa pembuatan website, web developer indonesia, jasa website UMKM, landing page katalog, portofolio developer, fullstack developer, Jaya Putra Syaipul",
+      },
+      { property: "og:title", content: "Jaya Putra Syaipul — Jasa Pembuatan Website Fullstack" },
       {
         property: "og:description",
         content:
-          "Portofolio Jaya Putra Syaipul, Fullstack Web Developer yang membangun website cepat, stabil, dan mudah digunakan.",
+          "Jasa pembuatan website: portofolio, landing page katalog UMKM, & website custom. Termasuk domain, hosting 1 tahun & SEO dasar.",
+      },
+      { property: "og:url", content: "/" },
+      { property: "og:image", content: "/img/profile-square.png" },
+      { name: "twitter:image", content: "/img/profile-square.png" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "Jaya Putra Syaipul — Jasa Pembuatan Website",
+          image: "/img/profile-square.png",
+          description:
+            "Jasa pembuatan website profesional: portofolio, landing page katalog UMKM, & website custom.",
+          areaServed: "ID",
+          priceRange: "Rp 400.000 - Rp 5.000.000+",
+          telephone: "+6282199870047",
+          email: "jayaputrasyaipul7@gmail.com",
+        }),
       },
     ],
   }),
