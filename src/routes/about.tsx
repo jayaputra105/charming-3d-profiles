@@ -19,17 +19,42 @@ const profileUrl = "/img/profile-square.png";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Jaya Putra Syaipul" },
+      { title: "Tentang Saya — Jaya Putra Syaipul, Fullstack Web Developer" },
       {
         name: "description",
         content:
-          "Tentang Jaya Putra Syaipul: soft skill, technical skill, skill set, dan bahasa.",
+          "Kenali Jaya Putra Syaipul: Fullstack Web Developer dengan keahlian React, TypeScript, Node.js, NeonDB, dan SEO. Membangun website modern untuk UMKM & personal branding.",
       },
-      { property: "og:title", content: "About — Jaya Putra Syaipul" },
+      {
+        name: "keywords",
+        content:
+          "tentang jaya putra syaipul, profil web developer, fullstack developer indonesia, skill web developer, react typescript developer",
+      },
+      { property: "og:title", content: "Tentang Saya — Jaya Putra Syaipul" },
       {
         property: "og:description",
         content:
-          "Tentang Jaya Putra Syaipul: soft skill, technical skill, skill set, dan bahasa.",
+          "Fullstack Web Developer: soft skill, technical skill, dan tools yang saya kuasai untuk membangun website Anda.",
+      },
+      { property: "og:url", content: "/about" },
+      { property: "og:type", content: "profile" },
+      { property: "og:image", content: "/img/profile-square.png" },
+      { name: "twitter:image", content: "/img/profile-square.png" },
+    ],
+    links: [{ rel: "canonical", href: "/about" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "Tentang Jaya Putra Syaipul",
+          mainEntity: {
+            "@type": "Person",
+            name: "Jaya Putra Syaipul",
+            jobTitle: "Fullstack Web Developer",
+          },
+        }),
       },
     ],
   }),

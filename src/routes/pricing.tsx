@@ -9,17 +9,110 @@ import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
-      { title: "Harga — Jaya Putra Syaipul" },
+      { title: "Harga Jasa Pembuatan Website — PROMO 20% OFF | Jaya Putra Syaipul" },
       {
         name: "description",
         content:
-          "PROMO 20% OFF (2 minggu). Paket harga pembuatan website: Portofolio mulai 500rb, Landing Page Katalog Belanja mulai 800rb, dan paket Custom sesuai kebutuhan. Sudah termasuk custom domain, hosting 1 tahun, dan setup SEO dasar.",
+          "PROMO 20% OFF (2 minggu). Harga jasa pembuatan website: Portofolio mulai Rp 400rb, Landing Page Katalog Belanja mulai Rp 640rb, & paket Custom. Termasuk domain, hosting 1 tahun & SEO dasar.",
       },
-      { property: "og:title", content: "Harga — Jaya Putra Syaipul" },
+      {
+        name: "keywords",
+        content:
+          "harga jasa pembuatan website, paket website murah, harga landing page, jasa website UMKM murah, promo website, harga custom website",
+      },
+      { property: "og:title", content: "Harga Jasa Pembuatan Website — PROMO 20% OFF" },
       {
         property: "og:description",
         content:
-          "PROMO 20% OFF selama 2 minggu. Portofolio mulai 500rb, Katalog Belanja mulai 800rb, dan Custom sesuai kebutuhan. Termasuk domain, hosting 1 tahun & SEO dasar.",
+          "PROMO 20% OFF (2 minggu). Portofolio mulai Rp 400rb, Katalog Belanja mulai Rp 640rb, & Custom. Termasuk domain, hosting 1 tahun & SEO dasar.",
+      },
+      { property: "og:url", content: "/pricing" },
+      { property: "og:type", content: "product" },
+    ],
+    links: [{ rel: "canonical", href: "/pricing" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Jasa Pembuatan Website",
+          provider: {
+            "@type": "Person",
+            name: "Jaya Putra Syaipul",
+          },
+          areaServed: "ID",
+          offers: [
+            {
+              "@type": "Offer",
+              name: "Website Portofolio",
+              price: "400000",
+              priceCurrency: "IDR",
+              description:
+                "Website portofolio 1-3 halaman. Termasuk domain, hosting 1 tahun & SEO dasar. Promo 20%.",
+            },
+            {
+              "@type": "Offer",
+              name: "Landing Page Katalog Belanja",
+              price: "640000",
+              priceCurrency: "IDR",
+              description:
+                "Landing page katalog produk / menu dengan checkout WhatsApp. Termasuk domain, hosting 1 tahun & SEO dasar. Promo 20%.",
+            },
+            {
+              "@type": "Offer",
+              name: "Website Custom",
+              priceSpecification: {
+                "@type": "PriceSpecification",
+                priceCurrency: "IDR",
+                minPrice: "1000000",
+              },
+              description:
+                "Website custom sesuai kebutuhan: pilih jumlah halaman & fitur. Promo 20%.",
+            },
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Apakah harga sudah termasuk domain dan hosting?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Ya, semua paket sudah termasuk custom domain, hosting 1 tahun, dan setup SEO dasar.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Berapa harga pembuatan website portofolio?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Paket website portofolio mulai dari Rp 500.000 (Rp 400.000 dengan promo 20% off yang berlaku 2 minggu).",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Berapa lama proses pembuatan website?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Umumnya 3-14 hari kerja tergantung kompleksitas dan jumlah fitur yang dipilih.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Bagaimana cara memesan?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Hubungi langsung via WhatsApp di +62 821-9987-0047 untuk konsultasi dan diskusi kebutuhan proyek Anda.",
+              },
+            },
+          ],
+        }),
       },
     ],
   }),
