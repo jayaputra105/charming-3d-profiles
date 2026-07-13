@@ -56,16 +56,18 @@ export function DeviceMockupShowcase({ src = "/" }: { src?: string }) {
           whileInView={{ opacity: 1, y: 0, rotateY: 8 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          animate={{ y: [0, -3, 0] }}
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          {...({ transition: { y: { duration: 6, repeat: Infinity, ease: "easeInOut" } } } as any)}
           className="absolute left-[2%] top-[6%] hidden w-[46%] sm:block"
           style={{ transformStyle: "preserve-3d" }}
           whileHover={{ y: -6, rotateY: 4, transition: { duration: 0.4 } }}
         >
-          <TabletFrame>
-            <MockupIframe src={iframeSrc} title="Tablet preview" scale={0.55} />
-          </TabletFrame>
+          <motion.div
+            animate={{ y: [0, -3, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <TabletFrame>
+              <MockupIframe src={iframeSrc} title="Tablet preview" scale={0.55} />
+            </TabletFrame>
+          </motion.div>
         </motion.div>
 
         {/* Laptop (main focus, center) */}
