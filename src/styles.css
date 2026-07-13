@@ -188,6 +188,42 @@
   backdrop-filter: blur(8px);
 }
 
+@utility btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 20%,
+      oklch(1 0 0 / 0.28) 45%,
+      oklch(1 0 0 / 0.28) 55%,
+      transparent 80%
+    );
+    transform: translateX(-120%);
+    transition: transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  &:hover::after {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.05); }
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -197,5 +233,6 @@
     background-attachment: fixed;
     color: var(--color-foreground);
     -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
   }
 }
