@@ -296,6 +296,10 @@ function PortfolioPage() {
     <SiteShell>
       <SectionTitle kicker="Portfolio" title="Proyek Pilihan" />
 
+      <DeviceMockupShowcase />
+
+
+
       <RevealStagger className="grid gap-6 sm:gap-8" stagger={0.12}>
         {projects.map((p) => (
           <RevealItem key={p.id}>
