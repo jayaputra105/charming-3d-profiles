@@ -3,6 +3,7 @@ import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { SiteShell, SectionTitle } from "@/components/SiteShell";
 import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
+import { DeviceMockupShowcase } from "@/components/DeviceMockupShowcase";
 
 
 export const Route = createFileRoute("/portfolio")({
