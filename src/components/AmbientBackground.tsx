@@ -41,7 +41,7 @@ export function AmbientBackground() {
 
       {/* Faint logo watermark */}
       <img
-        src={logoAsset.url}
+        src={LOGO_URL}
         alt=""
         aria-hidden="true"
         loading="lazy"
