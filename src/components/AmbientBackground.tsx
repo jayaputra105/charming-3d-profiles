@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import logoAsset from "@/assets/jps-logo.png.asset.json";
 
 /**
- * Subtle animated gradient orbs that sit behind page content.
- * Uses CSS transforms for performance; reduced-motion aware.
+ * Subtle animated gradient orbs + faint logo watermark that sit behind page content.
+ * Uses CSS transforms only; reduced-motion aware.
  */
 export function AmbientBackground() {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -19,13 +20,13 @@ export function AmbientBackground() {
     <div
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
-      style={{ willChange: "transform" }}
     >
       <div
         className="absolute -left-[20%] -top-[10%] h-[60vmax] w-[60vmax] rounded-full opacity-30 blur-[120px]"
         style={{
           background: "radial-gradient(circle, var(--primary-bright) 0%, transparent 70%)",
           animation: prefersReducedMotion ? "none" : "floatA 22s ease-in-out infinite",
+          willChange: "transform",
         }}
       />
       <div
@@ -33,27 +34,34 @@ export function AmbientBackground() {
         style={{
           background: "radial-gradient(circle, var(--accent) 0%, transparent 70%)",
           animation: prefersReducedMotion ? "none" : "floatB 26s ease-in-out infinite",
+          willChange: "transform",
         }}
       />
-      <div
-        className="absolute left-[30%] top-[40%] h-[35vmax] w-[35vmax] rounded-full opacity-20 blur-[90px]"
+
+      {/* Faint logo watermark */}
+      <img
+        src={logoAsset.url}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
+        className="absolute left-1/2 top-1/2 h-[80vmin] w-[80vmin] -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-[0.05] sm:opacity-[0.06]"
         style={{
-          background: "radial-gradient(circle, var(--primary-glow) 0%, transparent 70%)",
-          animation: prefersReducedMotion ? "none" : "floatC 30s ease-in-out infinite",
+          filter: "blur(1px) saturate(1.1)",
+          mixBlendMode: "screen",
+          animation: prefersReducedMotion ? "none" : "pulse-glow 10s ease-in-out infinite",
+          willChange: "opacity, transform",
         }}
       />
+
       <style>{`
         @keyframes floatA {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          50% { transform: translate(8%, 6%) scale(1.08); }
+          0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+          50% { transform: translate3d(6%, 4%, 0) scale(1.06); }
         }
         @keyframes floatB {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          50% { transform: translate(-6%, -8%) scale(1.05); }
-        }
-        @keyframes floatC {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          50% { transform: translate(5%, -5%) scale(1.1); }
+          0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+          50% { transform: translate3d(-5%, -6%, 0) scale(1.04); }
         }
       `}</style>
     </div>
