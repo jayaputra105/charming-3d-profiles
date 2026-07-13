@@ -116,7 +116,6 @@ function Home() {
                 style={{
                   background:
                     "conic-gradient(from 140deg, oklch(0.86 0.18 305), oklch(0.7 0.24 300), oklch(0.48 0.22 285), oklch(0.86 0.18 305))",
-                  animation: "spin-slow 14s linear infinite",
                 }}
               >
                 <img

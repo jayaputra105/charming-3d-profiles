@@ -3,6 +3,7 @@ import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { SiteShell, SectionTitle } from "@/components/SiteShell";
 import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
+import { DeviceMockupShowcase } from "@/components/DeviceMockupShowcase";
 
 
 export const Route = createFileRoute("/portfolio")({
@@ -294,6 +295,10 @@ function PortfolioPage() {
   return (
     <SiteShell>
       <SectionTitle kicker="Portfolio" title="Proyek Pilihan" />
+
+      <DeviceMockupShowcase />
+
+
 
       <RevealStagger className="grid gap-6 sm:gap-8" stagger={0.12}>
         {projects.map((p) => (

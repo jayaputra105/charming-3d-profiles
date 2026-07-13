@@ -1,9 +1,11 @@
-import { Link, useRouterState } from "@tanstack/react-router";
-import type { ReactNode } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
+import { useCallback, useRef, type ReactNode } from "react";
+import { AnimatePresence, motion, type PanInfo } from "framer-motion";
 
 import { AmbientBackground } from "./AmbientBackground";
-import logoAsset from "@/assets/jps-logo.png.asset.json";
+import { useIsMobile } from "@/hooks/use-mobile";
+
+const LOGO_URL = "/img/jps-logo.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -13,8 +15,64 @@ const nav = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
+const navPaths = nav.map((n) => n.to);
+
+function getActiveIndex(pathname: string) {
+  // Find the most specific matching nav route
+  if (pathname === "/") return 0;
+  const idx = navPaths.findIndex((p) => p !== "/" && pathname.startsWith(p));
+  return idx === -1 ? 0 : idx;
+}
+
 export function SiteShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const navigate = useNavigate();
+  const isMobile = useIsMobile();
+  const directionRef = useRef<"x" | "y" | null>(null);
+
+  const activeIdx = getActiveIndex(pathname);
+
+  const handlePanStart = useCallback((_: unknown, info: PanInfo) => {
+    directionRef.current = null;
+    // Determine direction on first meaningful movement
+    if (Math.abs(info.offset.x) > Math.abs(info.offset.y)) {
+      directionRef.current = "x";
+    } else if (Math.abs(info.offset.y) > 0) {
+      directionRef.current = "y";
+    }
+  }, []);
+
+  const handlePan = useCallback((_: unknown, info: PanInfo) => {
+    if (directionRef.current) return;
+    if (Math.abs(info.offset.x) > 10 && Math.abs(info.offset.x) > Math.abs(info.offset.y) * 1.5) {
+      directionRef.current = "x";
+    } else if (Math.abs(info.offset.y) > 10) {
+      directionRef.current = "y";
+    }
+  }, []);
+
+  const handlePanEnd = useCallback(
+    (_: unknown, info: PanInfo) => {
+      if (!isMobile) return;
+      if (directionRef.current !== "x") return;
+      const { offset, velocity } = info;
+      // Require decisive horizontal gesture
+      if (Math.abs(offset.x) < 70 && Math.abs(velocity.x) < 400) return;
+      if (Math.abs(offset.y) > Math.abs(offset.x)) return;
+
+      if (offset.x < 0 && activeIdx < navPaths.length - 1) {
+        navigate({ to: navPaths[activeIdx + 1] });
+      } else if (offset.x > 0 && activeIdx > 0) {
+        navigate({ to: navPaths[activeIdx - 1] });
+      }
+    },
+    [isMobile, activeIdx, navigate],
+  );
+
+  // Direction for enter/exit animation
+  const dirRef = useRef(activeIdx);
+  const direction = activeIdx >= dirRef.current ? 1 : -1;
+  dirRef.current = activeIdx;
 
   return (
     <div className="relative min-h-screen overflow-hidden text-foreground">
@@ -39,7 +97,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 style={{ background: "radial-gradient(circle, var(--primary-bright) 0%, transparent 70%)" }}
               />
               <img
-                src={logoAsset.url}
+                src={LOGO_URL}
                 alt="Logo Jaya Putra Syaipul"
                 className="h-full w-full rounded-full object-cover"
                 width={36}
@@ -89,15 +147,42 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <AnimatePresence mode="wait" initial={false}>
         <motion.main
           key={pathname}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -6 }}
-          transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, x: isMobile ? direction * 24 : 0, y: isMobile ? 0 : 8, scale: isMobile ? 0.985 : 1 }}
+          animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+          exit={{ opacity: 0, x: isMobile ? -direction * 24 : 0, y: isMobile ? 0 : -6, scale: isMobile ? 0.985 : 1 }}
+          transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+          onPanStart={isMobile ? handlePanStart : undefined}
+          onPan={isMobile ? handlePan : undefined}
+          onPanEnd={isMobile ? handlePanEnd : undefined}
+          style={{ touchAction: "pan-y" }}
           className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-8 sm:py-14"
         >
           {children}
         </motion.main>
       </AnimatePresence>
+
+      {isMobile && (
+        <div
+          aria-hidden
+          className="pointer-events-none fixed bottom-20 left-1/2 z-30 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-medium text-muted-foreground/70"
+          style={{
+            background: "oklch(0.18 0.04 282 / 0.5)",
+            backdropFilter: "blur(10px)",
+            border: "1px solid oklch(1 0 0 / 0.06)",
+          }}
+        >
+          {nav.map((_, i) => (
+            <span
+              key={i}
+              className="mx-0.5 inline-block h-1.5 w-1.5 rounded-full transition-all"
+              style={{
+                background: i === activeIdx ? "var(--primary-bright)" : "oklch(1 0 0 / 0.25)",
+                width: i === activeIdx ? "1rem" : "0.375rem",
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       <footer className="mt-12 sm:mt-16">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-muted-foreground sm:flex-row sm:px-8 sm:py-8 sm:text-sm">
