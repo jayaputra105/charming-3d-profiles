@@ -144,13 +144,12 @@ export function SiteShell({ children }: { children: ReactNode }) {
         </div>
       </header>
 
-      <AnimatePresence mode="wait" initial={false} custom={direction}>
+      <AnimatePresence mode="wait" initial={false}>
         <motion.main
           key={pathname}
-          custom={direction}
-          initial={(d: number) => ({ opacity: 0, x: isMobile ? d * 24 : 0, y: isMobile ? 0 : 8, scale: isMobile ? 0.985 : 1 })}
+          initial={{ opacity: 0, x: isMobile ? direction * 24 : 0, y: isMobile ? 0 : 8, scale: isMobile ? 0.985 : 1 }}
           animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-          exit={(d: number) => ({ opacity: 0, x: isMobile ? -d * 24 : 0, y: isMobile ? 0 : -6, scale: isMobile ? 0.985 : 1 })}
+          exit={{ opacity: 0, x: isMobile ? -direction * 24 : 0, y: isMobile ? 0 : -6, scale: isMobile ? 0.985 : 1 }}
           transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
           onPanStart={isMobile ? handlePanStart : undefined}
           onPan={isMobile ? handlePan : undefined}
