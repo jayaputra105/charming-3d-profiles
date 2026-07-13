@@ -61,74 +61,110 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <SiteShell>
-      <section className="space-y-5 sm:space-y-6">
+      <section className="space-y-6 sm:space-y-7">
         <Reveal>
           <span className="chip inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-primary sm:text-xs">
-            <Sparkles className="h-3.5 w-3.5" /> Fullstack Web Developer
+            <Sparkles className="h-3.5 w-3.5" /> Jasa Pembuatan Website Profesional
           </span>
         </Reveal>
 
         <Reveal delay={0.05}>
-          <div className="flex items-center gap-3 sm:gap-6">
-            {/* Round portrait with purple 3D glow */}
-            <div className="relative shrink-0">
-              <div
-                aria-hidden
-                className="absolute inset-0 -z-10 rounded-full blur-xl"
-                style={{
-                  background:
-                    "radial-gradient(circle, var(--primary-bright) 0%, transparent 70%)",
-                  opacity: 0.7,
-                }}
-              />
-              <div
-                className="rounded-full p-[3px]"
-                style={{ background: "var(--gradient-primary)" }}
-              >
-                <img
-                  src={profileUrl}
-                  alt="Foto profil Jaya Putra Syaipul"
-                  className="block h-16 w-16 rounded-full object-cover object-center ring-2 ring-background sm:h-28 sm:w-28 md:h-32 md:w-32"
-                />
-              </div>
-            </div>
-
-            <h1 className="min-w-0 font-black leading-[1.05] tracking-tight" style={{ fontSize: "clamp(1.5rem, 6vw, 3.75rem)" }}>
-              Halo, saya{" "}
-              <span className="bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">
-                Jaya Putra
-              </span>
-            </h1>
-          </div>
+          <h1
+            className="font-black leading-[1.05] tracking-tight"
+            style={{ fontSize: "clamp(2rem, 7.5vw, 4.25rem)" }}
+          >
+            Website Profesional yang Membantu{" "}
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: "var(--gradient-primary)",
+                filter: "drop-shadow(0 0 24px oklch(0.7 0.24 300 / 0.35))",
+              }}
+            >
+              Bisnis Anda Tampil Lebih Dipercaya
+            </span>
+          </h1>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <p className="max-w-xl leading-relaxed text-muted-foreground" style={{ fontSize: "clamp(0.9rem, 2.2vw, 1.125rem)" }}>
-            Saya membangun website yang cepat, stabil, aman, dan mudah digunakan —
-            disesuaikan dengan kebutuhan profil, layanan, maupun sistem informasi
-            bisnis Anda.
+          <p
+            className="max-w-2xl leading-relaxed text-muted-foreground"
+            style={{ fontSize: "clamp(1rem, 2.4vw, 1.2rem)" }}
+          >
+            Saya membantu bisnis membangun website yang{" "}
+            <span className="text-foreground">cepat, modern, SEO friendly, dan responsif</span>{" "}
+            — dirancang untuk membangun kepercayaan dan mendatangkan pelanggan baru.
           </p>
         </Reveal>
 
         <Reveal delay={0.15}>
-          <div className="flex flex-wrap gap-2.5 sm:gap-3">
-            <Link
-              to="/portfolio"
-              className="btn-primary group inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold sm:px-5 sm:py-2.5 sm:text-sm"
-            >
-              Lihat Portofolio
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              to="/contact"
-              className="btn-ghost inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-foreground sm:px-5 sm:py-2.5 sm:text-sm"
-            >
-              Hubungi Saya
-            </Link>
+          <div className="flex items-center gap-4 pt-1 sm:gap-5">
+            {/* Enlarged portrait with animated gradient ring + glow */}
+            <div className="relative shrink-0">
+              <div
+                aria-hidden
+                className="absolute inset-0 -z-10 rounded-full blur-2xl"
+                style={{
+                  background:
+                    "radial-gradient(circle, var(--primary-bright) 0%, transparent 70%)",
+                  opacity: 0.75,
+                  animation: "pulse-glow 6s ease-in-out infinite",
+                }}
+              />
+              <div
+                className="rounded-full p-[3px]"
+                style={{
+                  background:
+                    "conic-gradient(from 140deg, oklch(0.86 0.18 305), oklch(0.7 0.24 300), oklch(0.48 0.22 285), oklch(0.86 0.18 305))",
+                  animation: "spin-slow 14s linear infinite",
+                }}
+              >
+                <img
+                  src={profileUrl}
+                  alt="Foto profil Jaya Putra Syaipul"
+                  loading="eager"
+                  decoding="async"
+                  className="block h-20 w-20 rounded-full object-cover object-center ring-2 ring-background sm:h-32 sm:w-32 md:h-36 md:w-36"
+                />
+              </div>
+            </div>
+
+            <div className="min-w-0">
+              <p className="text-xs uppercase tracking-widest text-muted-foreground sm:text-sm">
+                Dikerjakan oleh
+              </p>
+              <p
+                className="mt-1 font-black leading-tight tracking-tight"
+                style={{ fontSize: "clamp(1.25rem, 4vw, 2rem)" }}
+              >
+                Jaya Putra Syaipul
+              </p>
+              <p className="mt-0.5 text-xs text-primary sm:text-sm">
+                Fullstack Web Developer · Build · Develop · Deliver
+              </p>
+            </div>
           </div>
         </Reveal>
 
         <Reveal delay={0.2}>
+          <div className="flex flex-wrap gap-2.5 pt-1 sm:gap-3">
+            <Link
+              to="/contact"
+              className="btn-primary btn-shine group inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold sm:px-6 sm:py-3 sm:text-base"
+            >
+              Hubungi Saya
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <Link
+              to="/portfolio"
+              className="btn-ghost inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-foreground sm:px-6 sm:py-3 sm:text-base"
+            >
+              Lihat Portofolio
+            </Link>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.25}>
           <div className="flex flex-wrap gap-3 pt-2 text-xs text-muted-foreground sm:gap-4 sm:text-sm">
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}`}
