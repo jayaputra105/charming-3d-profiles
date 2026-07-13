@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import logoAsset from "@/assets/jps-logo.png.asset.json";
+
+const LOGO_URL = "/img/jps-logo.png";
 
 /**
  * Subtle animated gradient orbs + faint logo watermark that sit behind page content.
