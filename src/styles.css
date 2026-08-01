@@ -5,9 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Dark purple gradient design system inspired by the reference mockup.
- * Soft inner gradients on cards, glowing purple accents, almost no hard borders.
+ * Monochrome dark design system: deep black canvas, charcoal glass panels,
+ * white typography, and violet used strictly as an accent.
  */
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -42,77 +43,81 @@
 :root {
   --radius: 1.5rem;
 
-  --background: oklch(0.16 0.03 280);
-  --foreground: oklch(0.96 0.01 280);
+  --background: oklch(0.11 0.004 285);
+  --foreground: oklch(0.97 0 0);
 
-  --card: oklch(0.22 0.05 280);
-  --card-foreground: oklch(0.96 0.01 280);
-  --popover: oklch(0.22 0.05 280);
-  --popover-foreground: oklch(0.96 0.01 280);
+  --card: oklch(0.16 0.005 285);
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.16 0.005 285);
+  --popover-foreground: oklch(0.97 0 0);
 
-  /* Vivid purple primary + bright accent */
-  --primary: oklch(0.66 0.2 295);
-  --primary-foreground: oklch(0.98 0.005 280);
-  --primary-glow: oklch(0.82 0.18 300);
-  --primary-bright: oklch(0.74 0.24 300);
-  --primary-deep: oklch(0.45 0.2 285);
+  /* Violet accent — used sparingly on top of the monochrome base */
+  --primary: oklch(0.63 0.19 298);
+  --primary-foreground: oklch(0.98 0 0);
+  --primary-glow: oklch(0.78 0.15 300);
+  --primary-bright: oklch(0.7 0.2 300);
+  --primary-deep: oklch(0.42 0.17 292);
 
-
-  --secondary: oklch(0.26 0.05 280);
-  --secondary-foreground: oklch(0.96 0.01 280);
-  --muted: oklch(0.26 0.04 280);
-  --muted-foreground: oklch(0.74 0.03 285);
-  --accent: oklch(0.7 0.18 295);
-  --accent-foreground: oklch(0.15 0.03 280);
+  --secondary: oklch(0.22 0.004 285);
+  --secondary-foreground: oklch(0.97 0 0);
+  --muted: oklch(0.22 0.004 285);
+  --muted-foreground: oklch(0.72 0.005 285);
+  --accent: oklch(0.66 0.18 300);
+  --accent-foreground: oklch(0.12 0.004 285);
 
   --destructive: oklch(0.62 0.21 27);
   --destructive-foreground: oklch(0.985 0.003 255);
 
-  --border: oklch(0.4 0.06 285 / 0.35);
-  --input: oklch(0.3 0.05 285);
-  --ring: oklch(0.7 0.18 295 / 0.5);
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(0.24 0.004 285);
+  --ring: oklch(0.63 0.19 298 / 0.5);
 
-  /* Soft card gradient — purple-tinted highlight at top-left fading to deep navy */
+  /* Charcoal panel gradient — light sheen top-left fading into near black */
   --gradient-card: linear-gradient(
     145deg,
-    oklch(0.34 0.09 285) 0%,
-    oklch(0.22 0.05 280) 45%,
-    oklch(0.17 0.04 278) 100%
+    oklch(0.26 0.005 285) 0%,
+    oklch(0.17 0.004 285) 48%,
+    oklch(0.13 0.003 285) 100%
+  );
+
+  /* Light panel (used for high-contrast "sticker" surfaces like the reference) */
+  --gradient-light: linear-gradient(
+    150deg,
+    oklch(0.99 0 0) 0%,
+    oklch(0.94 0 0) 60%,
+    oklch(0.87 0 0) 100%
   );
 
   --gradient-primary: linear-gradient(
     140deg,
-    oklch(0.86 0.18 305) 0%,
-    oklch(0.7 0.24 300) 45%,
-    oklch(0.48 0.22 285) 100%
+    oklch(0.8 0.13 300) 0%,
+    oklch(0.63 0.19 298) 50%,
+    oklch(0.4 0.16 292) 100%
   );
 
+  --grid-line: oklch(1 0 0 / 0.035);
 
   --gradient-page: radial-gradient(
-      900px 600px at 90% -10%,
-      oklch(0.45 0.2 290 / 0.55) 0%,
+      800px 500px at 85% -10%,
+      oklch(0.5 0.16 298 / 0.16) 0%,
       transparent 60%
     ),
     radial-gradient(
-      900px 700px at -10% 110%,
-      oklch(0.4 0.18 285 / 0.45) 0%,
+      700px 500px at -10% 105%,
+      oklch(0.45 0.14 295 / 0.12) 0%,
       transparent 65%
     ),
-    radial-gradient(
-      600px 400px at 50% 50%,
-      oklch(0.28 0.08 285 / 0.35) 0%,
-      transparent 70%
-    ),
-    linear-gradient(180deg, oklch(0.13 0.03 280) 0%, oklch(0.1 0.02 280) 100%);
+    linear-gradient(180deg, oklch(0.1 0.004 285) 0%, oklch(0.07 0.003 285) 100%);
 
   --shadow-soft:
-    0 30px 60px -20px oklch(0.05 0.05 280 / 0.6),
-    0 10px 30px -10px oklch(0.05 0.05 280 / 0.5),
-    inset 1px 1px 0 oklch(1 0 0 / 0.06);
+    0 30px 60px -25px oklch(0 0 0 / 0.85),
+    0 10px 30px -12px oklch(0 0 0 / 0.6),
+    inset 1px 1px 0 oklch(1 0 0 / 0.07);
   --shadow-glow:
-    0 0 40px -5px oklch(0.62 0.22 290 / 0.55),
-    0 20px 50px -15px oklch(0.05 0.05 280 / 0.6);
+    0 0 40px -8px oklch(0.63 0.19 298 / 0.45),
+    0 20px 50px -20px oklch(0 0 0 / 0.8);
 }
+
 
 /* === Utilities === */
 
@@ -131,10 +136,11 @@
     padding: 1px;
     background: linear-gradient(
       145deg,
-      oklch(1 0 0 / 0.22),
+      oklch(1 0 0 / 0.2),
       oklch(1 0 0 / 0) 45%,
-      oklch(0.7 0.18 295 / 0.3) 100%
+      oklch(1 0 0 / 0.06) 100%
     );
+
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
@@ -163,8 +169,26 @@
   &:hover {
     transform: translateY(-1px);
     box-shadow:
-      0 0 60px -5px oklch(0.62 0.22 290 / 0.7),
-      0 25px 60px -15px oklch(0.05 0.05 280 / 0.7);
+      0 0 60px -8px oklch(0.63 0.19 298 / 0.6),
+      0 25px 60px -20px oklch(0 0 0 / 0.85);
+  }
+}
+
+/* High-contrast white pill button (reference style) */
+@utility btn-light {
+  background: var(--gradient-light);
+  color: oklch(0.14 0.004 285);
+  border: 1px solid oklch(1 0 0 / 0.6);
+  box-shadow:
+    0 18px 40px -18px oklch(0 0 0 / 0.9),
+    inset 0 1px 0 oklch(1 0 0 / 0.9);
+  transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 250ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 24px 50px -20px oklch(0 0 0 / 0.95),
+      0 0 30px -12px oklch(0.63 0.19 298 / 0.5);
   }
 }
 
@@ -177,16 +201,25 @@
 
   &:hover {
     transform: translateY(-1px);
-    border-color: oklch(0.7 0.18 295 / 0.5);
+    border-color: oklch(1 0 0 / 0.28);
   }
 }
 
 @utility chip {
-  background: oklch(0.3 0.08 285 / 0.6);
+  background: oklch(1 0 0 / 0.06);
   color: var(--foreground);
-  border: 1px solid oklch(0.7 0.18 295 / 0.3);
+  border: 1px solid oklch(1 0 0 / 0.12);
   backdrop-filter: blur(8px);
 }
+
+/* Faint technical grid, like the reference backdrop */
+@utility grid-bg {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
 
 @utility btn-shine {
   position: relative;

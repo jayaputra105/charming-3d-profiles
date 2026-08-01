@@ -77,14 +77,15 @@ function Home() {
             <span
               className="bg-clip-text text-transparent"
               style={{
-                backgroundImage: "var(--gradient-primary)",
-                filter: "drop-shadow(0 0 24px oklch(0.7 0.24 300 / 0.35))",
+                backgroundImage:
+                  "linear-gradient(120deg, oklch(1 0 0) 0%, oklch(0.86 0.02 290) 45%, oklch(0.7 0.2 300) 100%)",
               }}
             >
               Bisnis Anda Tampil Lebih Dipercaya
             </span>
           </h1>
         </Reveal>
+
 
         <Reveal delay={0.1}>
           <p
@@ -107,17 +108,18 @@ function Home() {
                 style={{
                   background:
                     "radial-gradient(circle, var(--primary-bright) 0%, transparent 70%)",
-                  opacity: 0.75,
-                  animation: "pulse-glow 6s ease-in-out infinite",
+                  opacity: 0.35,
+                  animation: "pulse-glow 8s ease-in-out infinite",
                 }}
               />
               <div
                 className="rounded-full p-[3px]"
                 style={{
                   background:
-                    "conic-gradient(from 140deg, oklch(0.86 0.18 305), oklch(0.7 0.24 300), oklch(0.48 0.22 285), oklch(0.86 0.18 305))",
+                    "conic-gradient(from 140deg, oklch(1 0 0 / 0.9), oklch(0.7 0.2 300 / 0.8), oklch(0.3 0.01 285), oklch(1 0 0 / 0.9))",
                 }}
               >
+
                 <img
                   src={profileUrl}
                   alt="Foto profil Jaya Putra Syaipul"
@@ -149,11 +151,12 @@ function Home() {
           <div className="flex flex-wrap gap-2.5 pt-1 sm:gap-3">
             <Link
               to="/contact"
-              className="btn-primary btn-shine group inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold sm:px-6 sm:py-3 sm:text-base"
+              className="btn-light btn-shine group inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold sm:px-6 sm:py-3 sm:text-base"
             >
               Hubungi Saya
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
+
             <Link
               to="/portfolio"
               className="btn-ghost inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-foreground sm:px-6 sm:py-3 sm:text-base"

@@ -82,20 +82,21 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div
           className="mx-auto flex max-w-6xl items-center justify-between gap-2 rounded-full px-2 py-1.5 sm:px-4 sm:py-2"
           style={{
-            background: "oklch(0.18 0.04 282 / 0.55)",
-            backdropFilter: "blur(18px) saturate(140%)",
+            background: "oklch(0.14 0.004 285 / 0.72)",
+            backdropFilter: "blur(18px) saturate(120%)",
             border: "1px solid oklch(1 0 0 / 0.08)",
             boxShadow:
-              "0 10px 30px -15px oklch(0.05 0.05 280 / 0.6), inset 1px 1px 0 oklch(1 0 0 / 0.06)",
+              "0 10px 30px -18px oklch(0 0 0 / 0.9), inset 1px 1px 0 oklch(1 0 0 / 0.06)",
           }}
         >
           <Link to="/" className="flex min-w-0 items-center gap-2 pl-1 font-semibold tracking-tight">
             <span className="relative grid h-8 w-8 shrink-0 place-items-center sm:h-9 sm:w-9">
               <span
                 aria-hidden
-                className="absolute inset-0 -z-10 rounded-full blur-md opacity-70"
+                className="absolute inset-0 -z-10 rounded-full blur-md opacity-40"
                 style={{ background: "radial-gradient(circle, var(--primary-bright) 0%, transparent 70%)" }}
               />
+
               <img
                 src={LOGO_URL}
                 alt="Logo Jaya Putra Syaipul"
@@ -122,8 +123,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
                       layoutId="nav-active"
                       className="absolute inset-0 -z-10 rounded-full"
                       style={{
-                        background: "var(--gradient-primary)",
-                        boxShadow: "0 8px 20px -8px oklch(0.62 0.22 290 / 0.6)",
+                        background: "var(--gradient-light)",
+                        boxShadow: "0 8px 20px -10px oklch(0 0 0 / 0.9)",
                       }}
                       transition={{ type: "spring", stiffness: 380, damping: 32 }}
                     />
@@ -131,10 +132,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
                   <span
                     className={
                       isActive
-                        ? "relative font-semibold text-primary-foreground"
+                        ? "relative font-semibold text-background"
                         : "relative"
                     }
                   >
+
                     {item.label}
                   </span>
                 </Link>
@@ -166,7 +168,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           aria-hidden
           className="pointer-events-none fixed bottom-20 left-1/2 z-30 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-medium text-muted-foreground/70"
           style={{
-            background: "oklch(0.18 0.04 282 / 0.5)",
+            background: "oklch(0.14 0.004 285 / 0.6)",
             backdropFilter: "blur(10px)",
             border: "1px solid oklch(1 0 0 / 0.06)",
           }}
@@ -176,9 +178,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
               key={i}
               className="mx-0.5 inline-block h-1.5 w-1.5 rounded-full transition-all"
               style={{
-                background: i === activeIdx ? "var(--primary-bright)" : "oklch(1 0 0 / 0.25)",
+                background: i === activeIdx ? "oklch(0.97 0 0)" : "oklch(1 0 0 / 0.25)",
                 width: i === activeIdx ? "1rem" : "0.375rem",
               }}
+
             />
           ))}
         </div>
