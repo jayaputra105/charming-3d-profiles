@@ -108,17 +108,18 @@ function Home() {
                 style={{
                   background:
                     "radial-gradient(circle, var(--primary-bright) 0%, transparent 70%)",
-                  opacity: 0.75,
-                  animation: "pulse-glow 6s ease-in-out infinite",
+                  opacity: 0.35,
+                  animation: "pulse-glow 8s ease-in-out infinite",
                 }}
               />
               <div
                 className="rounded-full p-[3px]"
                 style={{
                   background:
-                    "conic-gradient(from 140deg, oklch(0.86 0.18 305), oklch(0.7 0.24 300), oklch(0.48 0.22 285), oklch(0.86 0.18 305))",
+                    "conic-gradient(from 140deg, oklch(1 0 0 / 0.9), oklch(0.7 0.2 300 / 0.8), oklch(0.3 0.01 285), oklch(1 0 0 / 0.9))",
                 }}
               >
+
                 <img
                   src={profileUrl}
                   alt="Foto profil Jaya Putra Syaipul"
