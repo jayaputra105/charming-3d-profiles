@@ -136,10 +136,11 @@
     padding: 1px;
     background: linear-gradient(
       145deg,
-      oklch(1 0 0 / 0.22),
+      oklch(1 0 0 / 0.2),
       oklch(1 0 0 / 0) 45%,
-      oklch(0.7 0.18 295 / 0.3) 100%
+      oklch(1 0 0 / 0.06) 100%
     );
+
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
