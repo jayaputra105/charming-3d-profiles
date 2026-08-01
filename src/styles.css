@@ -5,9 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Dark purple gradient design system inspired by the reference mockup.
- * Soft inner gradients on cards, glowing purple accents, almost no hard borders.
+ * Monochrome dark design system: deep black canvas, charcoal glass panels,
+ * white typography, and violet used strictly as an accent.
  */
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
