@@ -77,14 +77,15 @@ function Home() {
             <span
               className="bg-clip-text text-transparent"
               style={{
-                backgroundImage: "var(--gradient-primary)",
-                filter: "drop-shadow(0 0 24px oklch(0.7 0.24 300 / 0.35))",
+                backgroundImage:
+                  "linear-gradient(120deg, oklch(1 0 0) 0%, oklch(0.86 0.02 290) 45%, oklch(0.7 0.2 300) 100%)",
               }}
             >
               Bisnis Anda Tampil Lebih Dipercaya
             </span>
           </h1>
         </Reveal>
+
 
         <Reveal delay={0.1}>
           <p
