@@ -151,11 +151,12 @@ function Home() {
           <div className="flex flex-wrap gap-2.5 pt-1 sm:gap-3">
             <Link
               to="/contact"
-              className="btn-primary btn-shine group inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold sm:px-6 sm:py-3 sm:text-base"
+              className="btn-light btn-shine group inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold sm:px-6 sm:py-3 sm:text-base"
             >
               Hubungi Saya
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
+
             <Link
               to="/portfolio"
               className="btn-ghost inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-foreground sm:px-6 sm:py-3 sm:text-base"
