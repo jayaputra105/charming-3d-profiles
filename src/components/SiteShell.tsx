@@ -3,22 +3,23 @@ import { useCallback, useRef, type ReactNode } from "react";
 import { AnimatePresence, motion, type PanInfo } from "framer-motion";
 
 import { AmbientBackground } from "./AmbientBackground";
+import { Preloader } from "./Preloader";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const LOGO_URL = "/img/jps-logo.png";
+const INSTAGRAM_URL = "https://www.instagram.com/jaya_putra105";
 
 const nav = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
-  { to: "/portfolio", label: "Portfolio" },
+  { to: "/portfolio", label: "Portofolio" },
   { to: "/pricing", label: "Harga" },
-  { to: "/contact", label: "Contact" },
+  { to: "/contact", label: "Order" },
 ] as const;
 
 const navPaths = nav.map((n) => n.to);
 
 function getActiveIndex(pathname: string) {
-  // Find the most specific matching nav route
   if (pathname === "/") return 0;
   const idx = navPaths.findIndex((p) => p !== "/" && pathname.startsWith(p));
   return idx === -1 ? 0 : idx;
@@ -34,7 +35,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
   const handlePanStart = useCallback((_: unknown, info: PanInfo) => {
     directionRef.current = null;
-    // Determine direction on first meaningful movement
     if (Math.abs(info.offset.x) > Math.abs(info.offset.y)) {
       directionRef.current = "x";
     } else if (Math.abs(info.offset.y) > 0) {
@@ -56,7 +56,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
       if (!isMobile) return;
       if (directionRef.current !== "x") return;
       const { offset, velocity } = info;
-      // Require decisive horizontal gesture
       if (Math.abs(offset.x) < 70 && Math.abs(velocity.x) < 400) return;
       if (Math.abs(offset.y) > Math.abs(offset.x)) return;
 
@@ -69,45 +68,40 @@ export function SiteShell({ children }: { children: ReactNode }) {
     [isMobile, activeIdx, navigate],
   );
 
-  // Direction for enter/exit animation
   const dirRef = useRef(activeIdx);
   const direction = activeIdx >= dirRef.current ? 1 : -1;
   dirRef.current = activeIdx;
 
   return (
     <div className="relative min-h-screen overflow-hidden text-foreground">
+      <Preloader />
       <AmbientBackground />
 
-      <header className="sticky top-0 z-40 px-3 pt-3 sm:px-6 sm:pt-4">
+      {/* Reference-style top bar: full width, dark, subtle bottom rounding */}
+      <header className="sticky top-0 z-40">
         <div
-          className="mx-auto flex max-w-6xl items-center justify-between gap-2 rounded-full px-2 py-1.5 sm:px-4 sm:py-2"
+          className="flex items-center justify-between gap-2 px-3 py-2.5 sm:px-8 sm:py-3.5"
           style={{
-            background: "oklch(0.14 0.004 285 / 0.72)",
-            backdropFilter: "blur(18px) saturate(120%)",
-            border: "1px solid oklch(1 0 0 / 0.08)",
-            boxShadow:
-              "0 10px 30px -18px oklch(0 0 0 / 0.9), inset 1px 1px 0 oklch(1 0 0 / 0.06)",
+            background: "oklch(0.16 0 0 / 0.86)",
+            backdropFilter: "blur(16px) saturate(120%)",
+            borderBottom: "1px solid oklch(1 0 0 / 0.07)",
+            boxShadow: "0 18px 40px -32px oklch(0 0 0 / 1)",
           }}
         >
-          <Link to="/" className="flex min-w-0 items-center gap-2 pl-1 font-semibold tracking-tight">
-            <span className="relative grid h-8 w-8 shrink-0 place-items-center sm:h-9 sm:w-9">
-              <span
-                aria-hidden
-                className="absolute inset-0 -z-10 rounded-full blur-md opacity-40"
-                style={{ background: "radial-gradient(circle, var(--primary-bright) 0%, transparent 70%)" }}
-              />
-
-              <img
-                src={LOGO_URL}
-                alt="Logo Jaya Putra Syaipul"
-                className="h-full w-full rounded-full object-cover"
-                width={36}
-                height={36}
-              />
+          <Link to="/" className="flex min-w-0 shrink-0 items-center gap-2">
+            <img
+              src={LOGO_URL}
+              alt="Logo Jaya Putra Syaipul"
+              className="h-8 w-8 object-contain sm:h-9 sm:w-9"
+              width={36}
+              height={36}
+            />
+            <span className="hidden text-sm font-extrabold tracking-tight sm:inline sm:text-base">
+              Jaya Putra
             </span>
-            <span className="hidden truncate text-sm sm:inline sm:text-base">Jaya Putra</span>
           </Link>
-          <nav className="relative flex items-center gap-0.5 text-[11px] sm:gap-1 sm:text-sm">
+
+          <nav className="relative flex items-center gap-0.5 text-[11px] font-medium sm:gap-2 sm:text-[15px]">
             {nav.map((item) => {
               const isActive =
                 item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
@@ -116,48 +110,47 @@ export function SiteShell({ children }: { children: ReactNode }) {
                   key={item.to}
                   to={item.to}
                   activeOptions={{ exact: item.to === "/" }}
-                  className="relative rounded-full px-2.5 py-1.5 text-muted-foreground transition-colors duration-200 hover:text-foreground sm:px-3.5"
+                  className="relative rounded-full px-2 py-1.5 text-muted-foreground transition-colors duration-200 hover:text-foreground sm:px-4"
                 >
                   {isActive && (
                     <motion.span
                       layoutId="nav-active"
                       className="absolute inset-0 -z-10 rounded-full"
-                      style={{
-                        background: "var(--gradient-light)",
-                        boxShadow: "0 8px 20px -10px oklch(0 0 0 / 0.9)",
-                      }}
-                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      style={{ background: "oklch(1 0 0 / 0.1)" }}
+                      transition={{ type: "spring", stiffness: 420, damping: 34 }}
                     />
                   )}
-                  <span
-                    className={
-                      isActive
-                        ? "relative font-semibold text-background"
-                        : "relative"
-                    }
-                  >
-
+                  <span className={isActive ? "relative font-semibold text-foreground" : "relative"}>
                     {item.label}
                   </span>
                 </Link>
               );
             })}
           </nav>
+
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-light hidden shrink-0 rounded-full px-4 py-2 text-[13px] font-semibold lg:inline-flex"
+          >
+            @jaya_putra105
+          </a>
         </div>
       </header>
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.main
           key={pathname}
-          initial={{ opacity: 0, x: isMobile ? direction * 24 : 0, y: isMobile ? 0 : 8, scale: isMobile ? 0.985 : 1 }}
-          animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-          exit={{ opacity: 0, x: isMobile ? -direction * 24 : 0, y: isMobile ? 0 : -6, scale: isMobile ? 0.985 : 1 }}
+          initial={{ opacity: 0, x: isMobile ? direction * 24 : 0, y: isMobile ? 0 : 10 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          exit={{ opacity: 0, x: isMobile ? -direction * 24 : 0, y: isMobile ? 0 : -8 }}
           transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
           onPanStart={isMobile ? handlePanStart : undefined}
           onPan={isMobile ? handlePan : undefined}
           onPanEnd={isMobile ? handlePanEnd : undefined}
-          style={{ touchAction: "pan-y" }}
-          className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-8 sm:py-14"
+          style={{ touchAction: "pan-y", willChange: "transform, opacity" }}
+          className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-8 sm:py-10"
         >
           {children}
         </motion.main>
@@ -166,9 +159,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
       {isMobile && (
         <div
           aria-hidden
-          className="pointer-events-none fixed bottom-20 left-1/2 z-30 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-medium text-muted-foreground/70"
+          className="pointer-events-none fixed bottom-6 left-1/2 z-30 -translate-x-1/2 rounded-full px-3 py-1"
           style={{
-            background: "oklch(0.14 0.004 285 / 0.6)",
+            background: "oklch(0.16 0 0 / 0.6)",
             backdropFilter: "blur(10px)",
             border: "1px solid oklch(1 0 0 / 0.06)",
           }}
@@ -176,12 +169,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
           {nav.map((_, i) => (
             <span
               key={i}
-              className="mx-0.5 inline-block h-1.5 w-1.5 rounded-full transition-all"
+              className="mx-0.5 inline-block h-1.5 rounded-full transition-all"
               style={{
-                background: i === activeIdx ? "oklch(0.97 0 0)" : "oklch(1 0 0 / 0.25)",
+                background: i === activeIdx ? "oklch(1 0 0)" : "oklch(1 0 0 / 0.25)",
                 width: i === activeIdx ? "1rem" : "0.375rem",
               }}
-
             />
           ))}
         </div>
@@ -199,7 +191,12 @@ export function SiteShell({ children }: { children: ReactNode }) {
   );
 }
 
+/** Reference-style section heading: bold, with the last word inside a white marker box. */
 export function SectionTitle({ kicker, title }: { kicker?: string; title: string }) {
+  const words = title.trim().split(" ");
+  const last = words.length > 1 ? words.pop()! : "";
+  const head = words.join(" ");
+
   return (
     <div className="mb-8 sm:mb-10">
       {kicker && (
@@ -207,7 +204,13 @@ export function SectionTitle({ kicker, title }: { kicker?: string; title: string
           {kicker}
         </span>
       )}
-      <h1 className="mt-3 font-black tracking-tight" style={{ fontSize: "clamp(1.75rem, 5.5vw, 3.25rem)" }}>{title}</h1>
+      <h1
+        className="mt-3 font-extrabold leading-[1.05] tracking-tight"
+        style={{ fontSize: "clamp(1.85rem, 6vw, 3.5rem)" }}
+      >
+        {head}
+        {last && <> <span className="mark-box">{last}</span></>}
+      </h1>
     </div>
   );
 }
