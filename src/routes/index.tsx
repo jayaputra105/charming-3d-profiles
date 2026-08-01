@@ -61,136 +61,13 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <SiteShell>
-      <section className="space-y-6 sm:space-y-7">
-        <Reveal>
-          <span className="chip inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-primary sm:text-xs">
-            <Sparkles className="h-3.5 w-3.5" /> Jasa Pembuatan Website Profesional
-          </span>
-        </Reveal>
+      <Hero />
 
-        <Reveal delay={0.05}>
-          <h1
-            className="font-black leading-[1.05] tracking-tight"
-            style={{ fontSize: "clamp(2rem, 7.5vw, 4.25rem)" }}
-          >
-            Website Profesional yang Membantu{" "}
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  "linear-gradient(120deg, oklch(1 0 0) 0%, oklch(0.86 0.02 290) 45%, oklch(0.7 0.2 300) 100%)",
-              }}
-            >
-              Bisnis Anda Tampil Lebih Dipercaya
-            </span>
-          </h1>
-        </Reveal>
-
-
-        <Reveal delay={0.1}>
-          <p
-            className="max-w-2xl leading-relaxed text-muted-foreground"
-            style={{ fontSize: "clamp(1rem, 2.4vw, 1.2rem)" }}
-          >
-            Saya membantu bisnis membangun website yang{" "}
-            <span className="text-foreground">cepat, modern, SEO friendly, dan responsif</span>{" "}
-            — dirancang untuk membangun kepercayaan dan mendatangkan pelanggan baru.
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.15}>
-          <div className="flex items-center gap-4 pt-1 sm:gap-5">
-            {/* Enlarged portrait with animated gradient ring + glow */}
-            <div className="relative shrink-0">
-              <div
-                aria-hidden
-                className="absolute inset-0 -z-10 rounded-full blur-2xl"
-                style={{
-                  background:
-                    "radial-gradient(circle, var(--primary-bright) 0%, transparent 70%)",
-                  opacity: 0.35,
-                  animation: "pulse-glow 8s ease-in-out infinite",
-                }}
-              />
-              <div
-                className="rounded-full p-[3px]"
-                style={{
-                  background:
-                    "conic-gradient(from 140deg, oklch(1 0 0 / 0.9), oklch(0.7 0.2 300 / 0.8), oklch(0.3 0.01 285), oklch(1 0 0 / 0.9))",
-                }}
-              >
-
-                <img
-                  src={profileUrl}
-                  alt="Foto profil Jaya Putra Syaipul"
-                  loading="eager"
-                  decoding="async"
-                  className="block h-20 w-20 rounded-full object-cover object-center ring-2 ring-background sm:h-32 sm:w-32 md:h-36 md:w-36"
-                />
-              </div>
-            </div>
-
-            <div className="min-w-0">
-              <p className="text-xs uppercase tracking-widest text-muted-foreground sm:text-sm">
-                Dikerjakan oleh
-              </p>
-              <p
-                className="mt-1 font-black leading-tight tracking-tight"
-                style={{ fontSize: "clamp(1.25rem, 4vw, 2rem)" }}
-              >
-                Jaya Putra Syaipul
-              </p>
-              <p className="mt-0.5 text-xs text-primary sm:text-sm">
-                Fullstack Web Developer · Build · Develop · Deliver
-              </p>
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.2}>
-          <div className="flex flex-wrap gap-2.5 pt-1 sm:gap-3">
-            <Link
-              to="/contact"
-              className="btn-light btn-shine group inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold sm:px-6 sm:py-3 sm:text-base"
-            >
-              Hubungi Saya
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-
-            <Link
-              to="/portfolio"
-              className="btn-ghost inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-foreground sm:px-6 sm:py-3 sm:text-base"
-            >
-              Lihat Portofolio
-            </Link>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.25}>
-          <div className="flex flex-wrap gap-3 pt-2 text-xs text-muted-foreground sm:gap-4 sm:text-sm">
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}`}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
-            >
-              <Phone className="h-4 w-4 text-primary" /> 0821-9987-0047
-            </a>
-            <a
-              href={`mailto:${EMAIL_ADDRESS}`}
-              className="inline-flex items-center gap-2 break-all transition-colors hover:text-foreground"
-            >
-              <Mail className="h-4 w-4 text-primary" /> {EMAIL_ADDRESS}
-            </a>
-          </div>
-        </Reveal>
-      </section>
-
-      <Reveal className="mt-8 sm:mt-10">
+      <Reveal className="mt-8 sm:mt-12">
         <TechMarquee />
       </Reveal>
 
-      <RevealStagger className="mt-12 grid gap-4 sm:mt-20 sm:grid-cols-3 sm:gap-5" stagger={0.1}>
+      <RevealStagger className="mt-10 grid gap-4 sm:mt-16 sm:grid-cols-3 sm:gap-5" stagger={0.1}>
         {[
           { k: "Fokus", v: "Fullstack Web" },
           { k: "Pengalaman", v: "Web Cepat & Aman" },
@@ -210,6 +87,127 @@ function Home() {
     </SiteShell>
   );
 }
+
+function Hero() {
+  return (
+    <section className="panel-hero grid items-center gap-8 rounded-[28px] px-5 py-8 sm:rounded-[40px] sm:px-10 sm:py-12 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-10 md:px-14 md:py-16">
+      {/* ID-card style portrait */}
+      <Reveal direction="right" className="flex justify-center md:justify-start">
+        <div className="relative w-[190px] sm:w-[230px] md:w-[260px]">
+          <div
+            aria-hidden
+            className="absolute -inset-8 -z-10 rounded-full blur-3xl"
+            style={{
+              background: "radial-gradient(circle, var(--primary-bright) 0%, transparent 70%)",
+              opacity: 0.22,
+              animation: "pulse-glow 9s ease-in-out infinite",
+            }}
+          />
+          {/* lanyard */}
+          <div className="mx-auto h-10 w-6 rounded-b-md bg-gradient-to-b from-white/25 to-white/5 sm:h-14" />
+          <div
+            className="rounded-[22px] p-3 pb-8 shadow-2xl"
+            style={{
+              background: "var(--gradient-light)",
+              transformOrigin: "top center",
+              animation: "swing 7s ease-in-out infinite",
+              willChange: "transform",
+            }}
+          >
+            <img
+              src={profileUrl}
+              alt="Foto profil Jaya Putra Syaipul"
+              loading="eager"
+              decoding="async"
+              className="block aspect-[4/5] w-full rounded-[14px] object-cover object-center"
+            />
+            <p
+              className="mt-3 text-center text-lg font-semibold text-neutral-800 sm:text-xl"
+              style={{ fontFamily: "Caveat, cursive" }}
+            >
+              Fullstack Dev
+            </p>
+          </div>
+        </div>
+      </Reveal>
+
+      <div className="min-w-0">
+        <Reveal>
+          <p
+            className="text-muted-foreground"
+            style={{ fontSize: "clamp(1.1rem, 3vw, 1.7rem)" }}
+          >
+            Halo! Saya <span className="font-bold text-foreground">Jaya Putra</span>
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.05}>
+          <h1
+            className="mt-1 font-extrabold leading-[1.02] tracking-tight"
+            style={{ fontSize: "clamp(2.2rem, 8.5vw, 4.75rem)" }}
+          >
+            Web Developer<span className="text-primary">.</span>
+          </h1>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <p
+            className="mt-4 max-w-2xl leading-relaxed text-muted-foreground"
+            style={{ fontSize: "clamp(0.95rem, 2.2vw, 1.1rem)" }}
+          >
+            Membangun website yang cepat, modern, SEO friendly, dan responsif untuk
+            UMKM, bisnis, serta personal branding — dirancang agar bisnis Anda tampil
+            lebih dipercaya dan mendatangkan pelanggan baru.
+            <span
+              className="ml-0.5 inline-block"
+              style={{ animation: "caret 1.1s steps(1) infinite" }}
+            >
+              |
+            </span>
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.15}>
+          <div className="mt-6 flex flex-wrap gap-2.5 sm:gap-3">
+            <Link
+              to="/portfolio"
+              className="btn-light btn-shine group inline-flex min-h-11 items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold sm:text-base"
+            >
+              Portofolio
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <Link
+              to="/contact"
+              className="btn-ghost inline-flex min-h-11 items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-foreground sm:text-base"
+            >
+              Hubungi Saya
+            </Link>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <div className="mt-5 flex flex-wrap gap-3 text-xs text-muted-foreground sm:gap-5 sm:text-sm">
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
+            >
+              <Phone className="h-4 w-4 text-primary" /> 0821-9987-0047
+            </a>
+            <a
+              href={`mailto:${EMAIL_ADDRESS}`}
+              className="inline-flex items-center gap-2 break-all transition-colors hover:text-foreground"
+            >
+              <Mail className="h-4 w-4 text-primary" /> {EMAIL_ADDRESS}
+            </a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 
 function FeaturedProject() {
   return (
