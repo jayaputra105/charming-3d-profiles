@@ -168,7 +168,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           aria-hidden
           className="pointer-events-none fixed bottom-20 left-1/2 z-30 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-medium text-muted-foreground/70"
           style={{
-            background: "oklch(0.18 0.04 282 / 0.5)",
+            background: "oklch(0.14 0.004 285 / 0.6)",
             backdropFilter: "blur(10px)",
             border: "1px solid oklch(1 0 0 / 0.06)",
           }}
@@ -178,9 +178,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
               key={i}
               className="mx-0.5 inline-block h-1.5 w-1.5 rounded-full transition-all"
               style={{
-                background: i === activeIdx ? "var(--primary-bright)" : "oklch(1 0 0 / 0.25)",
+                background: i === activeIdx ? "oklch(0.97 0 0)" : "oklch(1 0 0 / 0.25)",
                 width: i === activeIdx ? "1rem" : "0.375rem",
               }}
+
             />
           ))}
         </div>
