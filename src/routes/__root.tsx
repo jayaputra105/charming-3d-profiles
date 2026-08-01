@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#0b0714" },
+      { name: "theme-color", content: "#232323" },
       { name: "author", content: "Jaya Putra Syaipul" },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
       { name: "googlebot", content: "index, follow" },
