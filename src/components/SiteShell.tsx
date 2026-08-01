@@ -123,8 +123,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
                       layoutId="nav-active"
                       className="absolute inset-0 -z-10 rounded-full"
                       style={{
-                        background: "var(--gradient-primary)",
-                        boxShadow: "0 8px 20px -8px oklch(0.62 0.22 290 / 0.6)",
+                        background: "var(--gradient-light)",
+                        boxShadow: "0 8px 20px -10px oklch(0 0 0 / 0.9)",
                       }}
                       transition={{ type: "spring", stiffness: 380, damping: 32 }}
                     />
@@ -132,10 +132,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
                   <span
                     className={
                       isActive
-                        ? "relative font-semibold text-primary-foreground"
+                        ? "relative font-semibold text-background"
                         : "relative"
                     }
                   >
+
                     {item.label}
                   </span>
                 </Link>
