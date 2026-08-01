@@ -5,12 +5,13 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Monochrome dark design system: deep black canvas, charcoal glass panels,
- * white typography, and violet used strictly as an accent.
+ * Design system: charcoal #232323 canvas with a faint technical grid,
+ * heavy Poppins typography, glossy dark panels, white pill buttons,
+ * violet used strictly as a small accent.
  */
 
-
 @theme inline {
+  --font-sans: Poppins, ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -43,49 +44,49 @@
 :root {
   --radius: 1.5rem;
 
-  --background: oklch(0.11 0.004 285);
-  --foreground: oklch(0.97 0 0);
+  /* #232323 canvas, like the reference */
+  --background: oklch(0.255 0 0);
+  --foreground: oklch(1 0 0);
 
-  --card: oklch(0.16 0.005 285);
-  --card-foreground: oklch(0.97 0 0);
-  --popover: oklch(0.16 0.005 285);
-  --popover-foreground: oklch(0.97 0 0);
+  --card: oklch(0.2 0 0);
+  --card-foreground: oklch(1 0 0);
+  --popover: oklch(0.2 0 0);
+  --popover-foreground: oklch(1 0 0);
 
-  /* Violet accent — used sparingly on top of the monochrome base */
+  /* Violet accent — sparse */
   --primary: oklch(0.63 0.19 298);
-  --primary-foreground: oklch(0.98 0 0);
+  --primary-foreground: oklch(0.99 0 0);
   --primary-glow: oklch(0.78 0.15 300);
   --primary-bright: oklch(0.7 0.2 300);
   --primary-deep: oklch(0.42 0.17 292);
 
-  --secondary: oklch(0.22 0.004 285);
-  --secondary-foreground: oklch(0.97 0 0);
-  --muted: oklch(0.22 0.004 285);
-  --muted-foreground: oklch(0.72 0.005 285);
+  --secondary: oklch(0.28 0 0);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.28 0 0);
+  --muted-foreground: oklch(0.72 0 0);
   --accent: oklch(0.66 0.18 300);
-  --accent-foreground: oklch(0.12 0.004 285);
+  --accent-foreground: oklch(0.16 0 0);
 
   --destructive: oklch(0.62 0.21 27);
   --destructive-foreground: oklch(0.985 0.003 255);
 
   --border: oklch(1 0 0 / 0.1);
-  --input: oklch(0.24 0.004 285);
+  --input: oklch(0.24 0 0);
   --ring: oklch(0.63 0.19 298 / 0.5);
 
-  /* Charcoal panel gradient — light sheen top-left fading into near black */
+  /* Glossy dark panel, sheen from top-left */
   --gradient-card: linear-gradient(
-    145deg,
-    oklch(0.26 0.005 285) 0%,
-    oklch(0.17 0.004 285) 48%,
-    oklch(0.13 0.003 285) 100%
+    160deg,
+    oklch(0.28 0 0) 0%,
+    oklch(0.19 0 0) 55%,
+    oklch(0.13 0 0) 100%
   );
 
-  /* Light panel (used for high-contrast "sticker" surfaces like the reference) */
   --gradient-light: linear-gradient(
     150deg,
-    oklch(0.99 0 0) 0%,
-    oklch(0.94 0 0) 60%,
-    oklch(0.87 0 0) 100%
+    oklch(1 0 0) 0%,
+    oklch(0.95 0 0) 60%,
+    oklch(0.88 0 0) 100%
   );
 
   --gradient-primary: linear-gradient(
@@ -95,36 +96,23 @@
     oklch(0.4 0.16 292) 100%
   );
 
-  --grid-line: oklch(1 0 0 / 0.035);
-
-  --gradient-page: radial-gradient(
-      800px 500px at 85% -10%,
-      oklch(0.5 0.16 298 / 0.16) 0%,
-      transparent 60%
-    ),
-    radial-gradient(
-      700px 500px at -10% 105%,
-      oklch(0.45 0.14 295 / 0.12) 0%,
-      transparent 65%
-    ),
-    linear-gradient(180deg, oklch(0.1 0.004 285) 0%, oklch(0.07 0.003 285) 100%);
+  --grid-line: oklch(1 0 0 / 0.055);
 
   --shadow-soft:
-    0 30px 60px -25px oklch(0 0 0 / 0.85),
-    0 10px 30px -12px oklch(0 0 0 / 0.6),
-    inset 1px 1px 0 oklch(1 0 0 / 0.07);
+    0 30px 60px -25px oklch(0 0 0 / 0.9),
+    0 10px 30px -12px oklch(0 0 0 / 0.65),
+    inset 1px 1px 0 oklch(1 0 0 / 0.06);
   --shadow-glow:
-    0 0 40px -8px oklch(0.63 0.19 298 / 0.45),
+    0 0 40px -8px oklch(0.63 0.19 298 / 0.4),
     0 20px 50px -20px oklch(0 0 0 / 0.8);
 }
-
 
 /* === Utilities === */
 
 @utility surface-card {
   background: var(--gradient-card);
   box-shadow: var(--shadow-soft);
-  border: 1px solid oklch(1 0 0 / 0.08);
+  border: 1px solid oklch(1 0 0 / 0.07);
   position: relative;
   isolation: isolate;
 
@@ -136,11 +124,10 @@
     padding: 1px;
     background: linear-gradient(
       145deg,
-      oklch(1 0 0 / 0.2),
+      oklch(1 0 0 / 0.18),
       oklch(1 0 0 / 0) 45%,
-      oklch(1 0 0 / 0.06) 100%
+      oklch(1 0 0 / 0.05) 100%
     );
-
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
@@ -148,6 +135,18 @@
             mask-composite: exclude;
     pointer-events: none;
   }
+}
+
+/* Oversized hero panel — soft radial sheen, like the reference */
+@utility panel-hero {
+  background:
+    radial-gradient(120% 90% at 12% 8%, oklch(0.32 0 0) 0%, transparent 55%),
+    radial-gradient(90% 80% at 95% 0%, oklch(0.63 0.19 298 / 0.14) 0%, transparent 60%),
+    linear-gradient(165deg, oklch(0.24 0 0) 0%, oklch(0.15 0 0) 100%);
+  border: 1px solid oklch(1 0 0 / 0.07);
+  box-shadow:
+    0 50px 90px -40px oklch(0 0 0 / 0.9),
+    inset 1px 1px 0 oklch(1 0 0 / 0.05);
 }
 
 @utility surface-primary {
@@ -167,9 +166,9 @@
     box-shadow 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
 
   &:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
     box-shadow:
-      0 0 60px -8px oklch(0.63 0.19 298 / 0.6),
+      0 0 60px -8px oklch(0.63 0.19 298 / 0.55),
       0 25px 60px -20px oklch(0 0 0 / 0.85);
   }
 }
@@ -177,7 +176,7 @@
 /* High-contrast white pill button (reference style) */
 @utility btn-light {
   background: var(--gradient-light);
-  color: oklch(0.14 0.004 285);
+  color: oklch(0.14 0 0);
   border: 1px solid oklch(1 0 0 / 0.6);
   box-shadow:
     0 18px 40px -18px oklch(0 0 0 / 0.9),
@@ -185,23 +184,23 @@
   transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 250ms ease;
 
   &:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
     box-shadow:
       0 24px 50px -20px oklch(0 0 0 / 0.95),
-      0 0 30px -12px oklch(0.63 0.19 298 / 0.5);
+      0 0 30px -12px oklch(0.63 0.19 298 / 0.45);
   }
 }
 
 @utility btn-ghost {
-  background: var(--gradient-card);
+  background: linear-gradient(160deg, oklch(0.26 0 0), oklch(0.17 0 0));
   color: var(--foreground);
-  border: 1px solid oklch(1 0 0 / 0.1);
+  border: 1px solid oklch(1 0 0 / 0.12);
   box-shadow: var(--shadow-soft);
   transition: transform 250ms ease, border-color 250ms ease;
 
   &:hover {
-    transform: translateY(-1px);
-    border-color: oklch(1 0 0 / 0.28);
+    transform: translateY(-2px);
+    border-color: oklch(1 0 0 / 0.3);
   }
 }
 
@@ -217,9 +216,18 @@
   background-image:
     linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: 56px 56px;
+  background-size: 34px 34px;
 }
 
+/* White "marker" box behind a word in a heading */
+@utility mark-box {
+  background: var(--gradient-light);
+  color: oklch(0.13 0 0);
+  border-radius: 0.9rem;
+  padding: 0.05em 0.38em 0.14em;
+  box-shadow: 0 14px 34px -18px oklch(0 0 0 / 0.9);
+  display: inline-block;
+}
 
 @utility btn-shine {
   position: relative;
@@ -257,15 +265,34 @@
   50% { opacity: 0.85; transform: scale(1.05); }
 }
 
+@keyframes swing {
+  0%, 100% { transform: rotate(-2.2deg); }
+  50% { transform: rotate(2.2deg); }
+}
+
+@keyframes caret {
+  0%, 45% { opacity: 1; }
+  50%, 95% { opacity: 0; }
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
   }
   html, body {
-    background: var(--gradient-page);
+    background-color: oklch(0.255 0 0);
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 34px 34px;
     background-attachment: fixed;
     color: var(--color-foreground);
+    font-family: Poppins, ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
+  }
+  ::selection {
+    background: oklch(1 0 0);
+    color: oklch(0 0 0);
   }
 }
