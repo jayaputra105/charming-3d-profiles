@@ -22,19 +22,23 @@ export function AmbientBackground() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
     >
+      {/* Technical grid */}
+      <div className="grid-bg absolute inset-0 opacity-90" />
+
+      {/* Subtle violet ambience — accent only, never dominant */}
       <div
-        className="absolute -left-[20%] -top-[10%] h-[60vmax] w-[60vmax] rounded-full opacity-30 blur-[120px]"
+        className="absolute -right-[15%] -top-[15%] h-[55vmax] w-[55vmax] rounded-full opacity-[0.18] blur-[130px]"
         style={{
           background: "radial-gradient(circle, var(--primary-bright) 0%, transparent 70%)",
-          animation: prefersReducedMotion ? "none" : "floatA 22s ease-in-out infinite",
+          animation: prefersReducedMotion ? "none" : "floatA 24s ease-in-out infinite",
           willChange: "transform",
         }}
       />
       <div
-        className="absolute -bottom-[15%] -right-[15%] h-[55vmax] w-[55vmax] rounded-full opacity-25 blur-[110px]"
+        className="absolute -bottom-[20%] -left-[15%] h-[50vmax] w-[50vmax] rounded-full opacity-[0.12] blur-[120px]"
         style={{
-          background: "radial-gradient(circle, var(--accent) 0%, transparent 70%)",
-          animation: prefersReducedMotion ? "none" : "floatB 26s ease-in-out infinite",
+          background: "radial-gradient(circle, var(--primary) 0%, transparent 70%)",
+          animation: prefersReducedMotion ? "none" : "floatB 28s ease-in-out infinite",
           willChange: "transform",
         }}
       />
@@ -46,14 +50,15 @@ export function AmbientBackground() {
         aria-hidden="true"
         loading="lazy"
         decoding="async"
-        className="absolute left-1/2 top-1/2 h-[80vmin] w-[80vmin] -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-[0.05] sm:opacity-[0.06]"
+        className="absolute left-1/2 top-1/2 h-[80vmin] w-[80vmin] -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-[0.035]"
         style={{
-          filter: "blur(1px) saturate(1.1)",
+          filter: "grayscale(0.6) blur(1px)",
           mixBlendMode: "screen",
-          animation: prefersReducedMotion ? "none" : "pulse-glow 10s ease-in-out infinite",
+          animation: prefersReducedMotion ? "none" : "pulse-glow 12s ease-in-out infinite",
           willChange: "opacity, transform",
         }}
       />
+
 
       <style>{`
         @keyframes floatA {
