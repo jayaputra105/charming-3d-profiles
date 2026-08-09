@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowLeft, FileText } from "lucide-react";
 
@@ -120,13 +119,13 @@ export function TermsSection() {
 
         {/* Back link */}
         <motion.div variants={fadeUp} className="mt-8 flex justify-center sm:mt-10">
-          <Link
-            to="/"
+          <a
+            href="#home"
             className="btn-ghost inline-flex items-center gap-2 rounded-2xl px-5 py-2.5 text-sm font-medium"
           >
             <ArrowLeft className="h-4 w-4" />
-            Kembali ke Beranda
-          </Link>
+            Kembali ke Atas
+          </a>
         </motion.div>
       </motion.div>
     </section>
