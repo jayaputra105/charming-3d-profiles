@@ -2,6 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Mail, Phone, Sparkles, MessageSquare, PencilRuler, Code, Rocket } from "lucide-react";
 import { SiteShell, GlassCard } from "@/components/SiteShell";
 import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
+import { AboutSection } from "@/sections/about";
+import { PortfolioSection } from "@/sections/portfolio";
+import { PricingSection } from "@/sections/pricing";
+import { ContactSection } from "@/sections/contact";
+import { TermsSection } from "@/sections/tc";
 import { TechMarquee } from "@/components/TechMarquee";
 import { DamarLogo } from "@/sections/portfolio";
 
@@ -61,7 +66,9 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <SiteShell>
-      <Hero />
+      <section id="home" className="scroll-mt-24">
+        <Hero />
+      </section>
 
       <Reveal className="mt-8 sm:mt-12">
         <TechMarquee />
@@ -84,6 +91,22 @@ function Home() {
 
       <FeaturedProject />
       <HowIWork />
+
+      <div className="mt-16 sm:mt-24">
+        <AboutSection />
+      </div>
+      <div className="mt-16 sm:mt-24">
+        <PortfolioSection />
+      </div>
+      <div className="mt-16 sm:mt-24">
+        <PricingSection />
+      </div>
+      <div className="mt-16 sm:mt-24">
+        <ContactSection />
+      </div>
+      <div className="mt-16 sm:mt-24">
+        <TermsSection />
+      </div>
     </SiteShell>
   );
 }
