@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
-import { TechMarquee } from "@/components/TechMarquee";
 
 
 const profileUrl = "/img/profile-square.png";
@@ -89,10 +88,6 @@ export function AboutSection() {
             />
           </div>
         </motion.section>
-      </Reveal>
-
-      <Reveal className="mt-6 sm:mt-8">
-        <TechMarquee />
       </Reveal>
 
       {/* === Info grid === */}
