@@ -296,45 +296,80 @@ function PortfolioPage() {
     <SiteShell>
       <SectionTitle kicker="Portfolio" title="Proyek Pilihan" />
 
-      <DeviceMockupShowcase />
+      <Reveal>
+        <div className="panel-hero mb-8 rounded-3xl p-5 sm:mb-12 sm:p-8">
+          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Katalog karya — dari e-commerce UMKM sampai landing page kuliner. Semua dibangun
+            ringan, cepat, dan rapi di semua ukuran layar.
+          </p>
+          <div className="mt-6">
+            <DeviceMockupShowcase />
+          </div>
+        </div>
+      </Reveal>
 
-
-
-      <RevealStagger className="grid gap-6 sm:gap-8" stagger={0.12}>
-        {projects.map((p) => (
+      <RevealStagger className="grid gap-5 sm:gap-7" stagger={0.09}>
+        {projects.map((p, i) => (
           <RevealItem key={p.id}>
             <motion.article
-              whileHover={{ y: -6 }}
-              transition={{ type: "spring", stiffness: 260, damping: 22 }}
-              className="surface-card group grid grid-cols-1 rounded-2xl p-4 sm:rounded-3xl sm:p-5 md:grid-cols-2 md:p-8"
-              style={{ perspective: 1000 }}
+              whileHover={{ y: -5 }}
+              whileTap={{ scale: 0.995 }}
+              transition={{ type: "spring", stiffness: 300, damping: 26 }}
+              className="surface-card group relative grid grid-cols-1 overflow-hidden rounded-2xl p-4 sm:rounded-3xl sm:p-6 md:grid-cols-2 md:gap-6 md:p-8"
             >
-              <div className="relative order-1 flex min-h-[200px] items-center justify-center overflow-hidden rounded-xl border border-primary/30 transition-all duration-500 group-hover:border-primary/50 group-hover:shadow-[0_0_40px_-10px_var(--primary-bright)] sm:min-h-[240px] md:order-2 md:min-h-[320px]">
-                <div className={`absolute -inset-6 -z-10 bg-gradient-to-br ${p.bg} blur-2xl transition-all duration-500 group-hover:opacity-80`} />
-                <div className="transition-transform duration-500 group-hover:scale-105">
+              {/* index marker */}
+              <span className="pointer-events-none absolute right-4 top-3 text-[11px] font-bold tabular-nums tracking-widest text-white/25 sm:right-6 sm:top-5 sm:text-xs">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+
+              <div className="relative order-1 flex min-h-[190px] items-center justify-center overflow-hidden rounded-xl sm:min-h-[240px] md:order-2 md:min-h-[300px]"
+                style={{
+                  background:
+                    "radial-gradient(90% 80% at 30% 15%, oklch(0.3 0 0) 0%, transparent 60%), linear-gradient(165deg, oklch(0.22 0 0), oklch(0.14 0 0))",
+                  border: "1px solid oklch(1 0 0 / 0.07)",
+                }}
+              >
+                <div className="grid-bg absolute inset-0 opacity-60" aria-hidden />
+                <motion.div
+                  className="relative"
+                  whileHover={{ scale: 1.06, rotate: -1.5 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 18 }}
+                >
                   {p.logo}
-                </div>
+                </motion.div>
               </div>
-              <div className="order-2 flex flex-col justify-center gap-4 p-2 sm:gap-5 md:order-1 md:gap-6 md:p-4">
-                <div className="flex flex-wrap gap-2">
+
+              <div className="order-2 flex flex-col justify-center gap-3 pt-4 sm:gap-4 md:order-1 md:pt-0">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {p.tags.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full bg-primary/15 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary ring-1 ring-primary/40 transition-colors group-hover:bg-primary/25 sm:px-3 sm:py-1 sm:text-xs"
+                      className="chip rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-widest transition-transform duration-200 hover:-translate-y-0.5 sm:px-3 sm:py-1 sm:text-[11px]"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
-                <h2 className="font-black tracking-tight" style={{ fontSize: "clamp(1.125rem, 3.5vw, 1.5rem)" }}>{p.title}</h2>
-                <p className="leading-relaxed text-muted-foreground" style={{ fontSize: "clamp(0.85rem, 2vw, 1rem)" }}>{p.description}</p>
+                <h2
+                  className="font-extrabold leading-tight tracking-tight"
+                  style={{ fontSize: "clamp(1.15rem, 3.4vw, 1.6rem)" }}
+                >
+                  {p.title}
+                </h2>
+                <p
+                  className="leading-relaxed text-muted-foreground"
+                  style={{ fontSize: "clamp(0.85rem, 2vw, 1rem)" }}
+                >
+                  {p.description}
+                </p>
                 <a
                   href={p.demoUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-lg shadow-primary/40 transition-all hover:-translate-y-0.5 hover:shadow-primary/60 sm:px-5 sm:py-2.5 sm:text-sm"
+                  className="btn-light btn-shine group/cta mt-1 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold sm:px-5 sm:py-2.5 sm:text-sm"
                 >
-                  Kunjungi Website <ExternalLink className="h-4 w-4" />
+                  Kunjungi Website
+                  <ExternalLink className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
                 </a>
               </div>
             </motion.article>
@@ -344,4 +379,5 @@ function PortfolioPage() {
     </SiteShell>
   );
 }
+
 
