@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+
 import {
   Heart,
   Code2,
@@ -9,66 +9,21 @@ import {
   Instagram,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { SiteShell } from "@/components/SiteShell";
 import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
 import { TechMarquee } from "@/components/TechMarquee";
 
 
 const profileUrl = "/img/profile-square.png";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "Tentang Saya — Jaya Putra Syaipul, Fullstack Web Developer" },
-      {
-        name: "description",
-        content:
-          "Kenali Jaya Putra Syaipul: Fullstack Web Developer dengan keahlian React, TypeScript, Node.js, NeonDB, dan SEO. Membangun website modern untuk UMKM & personal branding.",
-      },
-      {
-        name: "keywords",
-        content:
-          "tentang jaya putra syaipul, profil web developer, fullstack developer indonesia, skill web developer, react typescript developer",
-      },
-      { property: "og:title", content: "Tentang Saya — Jaya Putra Syaipul" },
-      {
-        property: "og:description",
-        content:
-          "Fullstack Web Developer: soft skill, technical skill, dan tools yang saya kuasai untuk membangun website Anda.",
-      },
-      { property: "og:url", content: "/about" },
-      { property: "og:type", content: "profile" },
-      { property: "og:image", content: "/img/profile-square.png" },
-      { name: "twitter:image", content: "/img/profile-square.png" },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "AboutPage",
-          name: "Tentang Jaya Putra Syaipul",
-          mainEntity: {
-            "@type": "Person",
-            name: "Jaya Putra Syaipul",
-            jobTitle: "Fullstack Web Developer",
-          },
-        }),
-      },
-    ],
-  }),
-  component: AboutPage,
-});
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
 } as const;
 
-function AboutPage() {
+export function AboutSection() {
   return (
-    <SiteShell>
+    <section id="about" className="scroll-mt-24">
       {/* === Hero (foto di dalam border About me) === */}
       <Reveal>
         <motion.section
@@ -191,7 +146,7 @@ function AboutPage() {
           </InfoCard>
         </RevealItem>
       </RevealStagger>
-    </SiteShell>
+    </section>
   );
 }
 
