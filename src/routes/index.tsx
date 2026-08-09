@@ -1,9 +1,14 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Mail, Phone, Sparkles, MessageSquare, PencilRuler, Code, Rocket } from "lucide-react";
 import { SiteShell, GlassCard } from "@/components/SiteShell";
 import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
+import { AboutSection } from "@/sections/about";
+import { PortfolioSection } from "@/sections/portfolio";
+import { PricingSection } from "@/sections/pricing";
+import { ContactSection } from "@/sections/contact";
+import { TermsSection } from "@/sections/tc";
 import { TechMarquee } from "@/components/TechMarquee";
-import { DamarLogo } from "./portfolio";
+import { DamarLogo } from "@/sections/portfolio";
 
 
 const profileUrl = "/img/profile-square.png";
@@ -61,7 +66,9 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <SiteShell>
-      <Hero />
+      <section id="home" className="scroll-mt-24">
+        <Hero />
+      </section>
 
       <Reveal className="mt-8 sm:mt-12">
         <TechMarquee />
@@ -84,6 +91,22 @@ function Home() {
 
       <FeaturedProject />
       <HowIWork />
+
+      <div className="mt-16 sm:mt-24">
+        <AboutSection />
+      </div>
+      <div className="mt-16 sm:mt-24">
+        <PortfolioSection />
+      </div>
+      <div className="mt-16 sm:mt-24">
+        <PricingSection />
+      </div>
+      <div className="mt-16 sm:mt-24">
+        <ContactSection />
+      </div>
+      <div className="mt-16 sm:mt-24">
+        <TermsSection />
+      </div>
     </SiteShell>
   );
 }
@@ -169,19 +192,19 @@ function Hero() {
 
         <Reveal delay={0.15}>
           <div className="mt-6 flex flex-wrap gap-2.5 sm:gap-3">
-            <Link
-              to="/portfolio"
+            <a
+              href="#portfolio"
               className="btn-light btn-shine group inline-flex min-h-11 items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold sm:text-base"
             >
               Portofolio
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              to="/contact"
+            </a>
+            <a
+              href="#contact"
               className="btn-ghost inline-flex min-h-11 items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-foreground sm:text-base"
             >
               Hubungi Saya
-            </Link>
+            </a>
           </div>
         </Reveal>
 
@@ -230,13 +253,13 @@ function FeaturedProject() {
             ke WhatsApp.
           </p>
           <div className="flex flex-wrap gap-2.5">
-            <Link
-              to="/portfolio"
+            <a
+              href="#portfolio"
               className="btn-primary group inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold sm:px-5 sm:py-2.5 sm:text-sm"
             >
               Lihat Semua Proyek
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
+            </a>
             <a
               href="https://damar-catering.vercel.app/"
               target="_blank"

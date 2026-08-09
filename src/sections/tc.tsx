@@ -1,17 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowLeft, FileText } from "lucide-react";
-import { SiteShell } from "@/components/SiteShell";
 
-export const Route = createFileRoute("/tc")({
-  head: () => ({
-    meta: [
-      { title: "Syarat & Ketentuan Layanan" },
-      { name: "description", content: "Syarat dan ketentuan layanan pengembangan website." },
-    ],
-  }),
-  component: TermsPage,
-});
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -63,9 +52,9 @@ const sections = [
   },
 ];
 
-function TermsPage() {
+export function TermsSection() {
   return (
-    <SiteShell>
+    <section id="tc" className="scroll-mt-24">
       <motion.div
         initial="hidden"
         animate="show"
@@ -130,15 +119,15 @@ function TermsPage() {
 
         {/* Back link */}
         <motion.div variants={fadeUp} className="mt-8 flex justify-center sm:mt-10">
-          <Link
-            to="/"
+          <a
+            href="#home"
             className="btn-ghost inline-flex items-center gap-2 rounded-2xl px-5 py-2.5 text-sm font-medium"
           >
             <ArrowLeft className="h-4 w-4" />
-            Kembali ke Beranda
-          </Link>
+            Kembali ke Atas
+          </a>
         </motion.div>
       </motion.div>
-    </SiteShell>
+    </section>
   );
 }

@@ -1,58 +1,17 @@
-import { createFileRoute } from "@tanstack/react-router";
+
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
-import { SiteShell, SectionTitle, GlassCard } from "@/components/SiteShell";
+import { SectionTitle, GlassCard } from "@/components/SiteShell";
 import { Reveal, RevealStagger, RevealItem } from "@/components/Reveal";
 
 
 const WHATSAPP_NUMBER = "6282199870047";
 const EMAIL_ADDRESS = "jayaputrasyaipul7@gmail.com";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Kontak — Diskusi Proyek Website | Jaya Putra Syaipul" },
-      {
-        name: "description",
-        content:
-          "Hubungi Jaya Putra Syaipul via WhatsApp (+62 821-9987-0047) atau email jayaputrasyaipul7@gmail.com untuk diskusi proyek website Anda.",
-      },
-      {
-        name: "keywords",
-        content:
-          "kontak web developer, jasa pembuatan website whatsapp, hire fullstack developer, konsultasi website",
-      },
-      { property: "og:title", content: "Kontak — Diskusi Proyek Website" },
-      {
-        property: "og:description",
-        content: "Hubungi via WhatsApp atau Email untuk diskusi proyek website Anda.",
-      },
-      { property: "og:url", content: "/contact" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ContactPage",
-          name: "Kontak Jaya Putra Syaipul",
-          mainEntity: {
-            "@type": "Person",
-            name: "Jaya Putra Syaipul",
-            email: "jayaputrasyaipul7@gmail.com",
-            telephone: "+6282199870047",
-          },
-        }),
-      },
-    ],
-  }),
-  component: ContactPage,
-});
 
-function ContactPage() {
+export function ContactSection() {
   return (
-    <SiteShell>
+    <section id="contact" className="scroll-mt-24">
       <SectionTitle kicker="Contact" title="Mari Berkolaborasi" />
       <Reveal>
         <p className="-mt-4 mb-8 max-w-2xl text-muted-foreground">
@@ -100,7 +59,7 @@ function ContactPage() {
           />
         </RevealItem>
       </RevealStagger>
-    </SiteShell>
+    </section>
   );
 }
 
