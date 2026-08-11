@@ -71,7 +71,7 @@ export function LilaLogo() {
         fill="url(#lilaFlame)"
       />
       <text x="100" y="158" textAnchor="middle" fontFamily="Georgia, serif" fontStyle="italic" fontWeight="700" fontSize="26" fill="#f59e0b">
-        Damar
+        Lila
       </text>
       <text x="100" y="180" textAnchor="middle" fontFamily="ui-sans-serif, system-ui" fontWeight="600" fontSize="11" fill="#f5e9d4" letterSpacing="3">
         CATERING
