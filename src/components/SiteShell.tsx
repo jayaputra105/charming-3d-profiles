@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 
 import { AmbientBackground } from "./AmbientBackground";
@@ -48,6 +49,14 @@ function useActiveSection() {
 
 export function SiteShell({ children }: { children: ReactNode }) {
   const active = useActiveSection();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden text-foreground">
@@ -76,50 +85,85 @@ export function SiteShell({ children }: { children: ReactNode }) {
               width={36}
               height={36}
             />
-            <span className="hidden text-sm font-extrabold tracking-tight sm:inline sm:text-base">
+            <span className="text-sm font-extrabold tracking-tight sm:text-base">
               Jaya Putra
             </span>
           </button>
 
-          <nav className="relative flex items-center gap-0.5 text-[11px] font-medium sm:gap-2 sm:text-[15px]">
-            {nav.map((item) => {
-              const isActive = active === item.id;
-              return (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(item.id);
-                  }}
-                  className="relative rounded-full px-2 py-1.5 text-muted-foreground transition-colors duration-200 hover:text-foreground sm:px-4"
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-active"
-                      className="absolute inset-0 -z-10 rounded-full"
-                      style={{ background: "oklch(1 0 0 / 0.1)" }}
-                      transition={{ type: "spring", stiffness: 420, damping: 34 }}
-                    />
-                  )}
-                  <span className={isActive ? "relative font-semibold text-foreground" : "relative"}>
-                    {item.label}
-                  </span>
-                </a>
-              );
-            })}
-          </nav>
-
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="btn-light hidden shrink-0 rounded-full px-4 py-2 text-[13px] font-semibold lg:inline-flex"
+          <button
+            type="button"
+            aria-label={open ? "Tutup menu" : "Buka menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="btn-ghost grid h-10 w-10 shrink-0 place-items-center rounded-full text-foreground"
           >
-            @jaya_putra105
-          </a>
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
+
+        <AnimatePresence>
+          {open && (
+            <>
+              <motion.button
+                type="button"
+                aria-label="Tutup menu"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.18 }}
+                onClick={() => setOpen(false)}
+                className="fixed inset-0 -z-10 cursor-default"
+                style={{ background: "oklch(0 0 0 / 0.55)" }}
+              />
+              <motion.nav
+                initial={{ opacity: 0, y: -12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="absolute inset-x-0 top-full flex flex-col gap-1 px-3 pb-4 pt-3 sm:px-8"
+                style={{
+                  background: "oklch(0.16 0 0 / 0.96)",
+                  backdropFilter: "blur(16px) saturate(120%)",
+                  borderBottom: "1px solid oklch(1 0 0 / 0.07)",
+                }}
+              >
+                {nav.map((item) => {
+                  const isActive = active === item.id;
+                  return (
+                    <a
+                      key={item.id}
+                      href={`#${item.id}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setOpen(false);
+                        scrollToSection(item.id);
+                      }}
+                      className={`rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
+                        isActive
+                          ? "font-semibold text-foreground"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                      style={isActive ? { background: "oklch(1 0 0 / 0.1)" } : undefined}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                })}
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="btn-light mt-2 inline-flex items-center justify-center rounded-full px-4 py-2.5 text-[13px] font-semibold"
+                >
+                  @jaya_putra105
+                </a>
+              </motion.nav>
+            </>
+          )}
+        </AnimatePresence>
       </header>
+
 
       <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-8 sm:py-10">{children}</main>
 

@@ -8,7 +8,7 @@ import { PricingSection } from "@/sections/pricing";
 import { ContactSection } from "@/sections/contact";
 import { TermsSection } from "@/sections/tc";
 import { TechMarquee } from "@/components/TechMarquee";
-import { DamarLogo } from "@/sections/portfolio";
+import { LilaLogo } from "@/sections/portfolio";
 
 
 const profileUrl = "/img/profile-square.png";
@@ -238,14 +238,14 @@ function FeaturedProject() {
       <div className="surface-card grid grid-cols-1 items-center gap-6 overflow-hidden rounded-2xl p-5 sm:rounded-3xl sm:p-8 md:grid-cols-2 md:p-10">
         <div className="relative order-1 flex min-h-[220px] items-center justify-center overflow-hidden rounded-xl border border-primary/30 sm:min-h-[280px] md:order-2">
           <div className="absolute -inset-6 -z-10 bg-gradient-to-br from-amber-400/25 via-red-700/10 to-transparent blur-2xl" />
-          <DamarLogo />
+          <LilaLogo />
         </div>
         <div className="order-2 space-y-4 md:order-1 md:space-y-5">
           <span className="chip inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-widest sm:text-xs">
             <Sparkles className="h-3 w-3" /> Proyek Unggulan
           </span>
           <h2 className="font-black tracking-tight" style={{ fontSize: "clamp(1.25rem, 4vw, 2rem)" }}>
-            Damar Catering
+            Lila Catering
           </h2>
           <p className="leading-relaxed text-muted-foreground" style={{ fontSize: "clamp(0.85rem, 2vw, 1rem)" }}>
             Website katering pernikahan & prasmanan di Balikpapan: tagline brand,
@@ -261,7 +261,7 @@ function FeaturedProject() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="https://damar-catering.vercel.app/"
+              href="https://lilacatering.vercel.app/"
               target="_blank"
               rel="noreferrer"
               className="btn-ghost inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-foreground sm:px-5 sm:py-2.5 sm:text-sm"
