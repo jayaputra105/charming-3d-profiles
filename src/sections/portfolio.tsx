@@ -54,11 +54,11 @@ function BakeryLogo() {
   );
 }
 
-export function DamarLogo() {
+export function LilaLogo() {
   return (
     <svg viewBox="0 0 200 200" className="h-24 w-24 sm:h-28 sm:w-28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
-        <linearGradient id="damarFlame" x1="0" x2="0" y1="0" y2="1">
+        <linearGradient id="lilaFlame" x1="0" x2="0" y1="0" y2="1">
           <stop offset="0" stopColor="#fde68a" />
           <stop offset="0.6" stopColor="#f59e0b" />
           <stop offset="1" stopColor="#b91c1c" />
@@ -68,7 +68,7 @@ export function DamarLogo() {
       <circle cx="100" cy="86" r="46" fill="none" stroke="#f59e0b" strokeWidth="3" />
       <path
         d="M100 54 c 10 14 20 22 20 38 a20 20 0 0 1 -40 0 c 0 -12 8 -18 12 -28 c 2 8 8 10 8 -10 z"
-        fill="url(#damarFlame)"
+        fill="url(#lilaFlame)"
       />
       <text x="100" y="158" textAnchor="middle" fontFamily="Georgia, serif" fontStyle="italic" fontWeight="700" fontSize="26" fill="#f59e0b">
         Damar
@@ -221,12 +221,12 @@ const projects: Project[] = [
   },
   {
     id: 6,
-    title: "Damar Catering — Katering Pernikahan & Prasmanan",
+    title: "Lila Catering — Katering Pernikahan & Prasmanan",
     tags: ["Katering", "Halal", "Balikpapan"],
     description:
-      "Website resmi Damar Catering Balikpapan: jasa katering pernikahan dan prasmanan halal. Menampilkan hero dengan tagline brand, keunggulan usaha (halal terjamin, rasa autentik, kapasitas besar), katalog menu (pondokan, menu nusantara, snack box, minuman & dessert), serta tombol konsultasi langsung ke WhatsApp.",
-    demoUrl: "https://damar-catering.vercel.app/",
-    logo: <DamarLogo />,
+      "Website resmi Lila Catering Balikpapan: jasa katering pernikahan dan prasmanan halal. Menampilkan hero dengan tagline brand, keunggulan usaha (halal terjamin, rasa autentik, kapasitas besar), katalog menu (pondokan, menu nusantara, snack box, minuman & dessert), serta tombol konsultasi langsung ke WhatsApp.",
+    demoUrl: "https://lilacatering.vercel.app/",
+    logo: <LilaLogo />,
     bg: "from-amber-400/25 via-red-700/10 to-transparent",
   },
   {
